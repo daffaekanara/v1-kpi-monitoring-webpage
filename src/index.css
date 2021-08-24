@@ -1,0 +1,521 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: montserrat, sans-serif;
+}
+
+:root{
+  --primary: #fff;
+}
+
+
+.login-app {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f4f4;
+}
+
+.login-form-group {
+  display: block;
+  position: relative;
+}
+
+.login-form-group:after {
+  content: '';
+  display: block;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: 1;
+  background-image: linear-gradient(to bottom right, #ffce00, #fe4880);
+}
+
+.login-form-title {
+  display: block;
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 30px auto;
+  overflow: auto;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.anouncement-container {
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px transparent;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #abd5ab;
+}
+
+.upload-alert-container {
+  max-width: 800px;
+  margin: center auto;
+  overflow: auto;
+  height: 45px;
+  border: 1px transparent;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #abd5ab;
+}
+
+.edit-data-container {
+  max-width: 800px;
+  margin: 30px auto;
+  overflow: auto;
+  border: 1px solid steelblue;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+}
+
+.edit-data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.upload-data-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.btn-container {
+  margin: 5px;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  padding: 1px;
+  border-radius: 10px;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.task {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.about {
+  background: #dddddd;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.task.reminder {
+  border-left: 5px solid green;
+}
+
+.task h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-form {
+  margin-bottom: 40px;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-comment {
+  margin: 20px 0;
+}
+
+.form-control-comment label {
+  display: block;
+}
+
+.form-control-comment input {
+  width: 100%;
+  height: 120px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-control-check label {
+  flex: 1;
+}
+
+.form-control-check input {
+  flex: 2;
+  height: 20px;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.profile-picture {
+  border-radius: 1000;
+}
+
+.navbar {
+  background-color: #060b26; 
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.menu-bars {
+   margin-left: 2rem;
+   font-size: 2rem;
+   background: none;
+}
+
+.nav-menu {
+    background-color: #060b26; 
+     width: 250px;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     position: fixed;
+     top: 0;
+     left: -100%;
+     transition: 850ms;  
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+.nav-text a {
+  text-decoration: none;
+  color: #f5f5f5;
+  font-size: 18px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 5px;
+}
+
+.nav-text a:hover {
+  background-color: #1a83ff;
+  width: 95%;
+}
+
+.nav-menu-items {
+  width: 100%;
+}
+
+.navbar-toggle {
+  background-color: #060b26;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+span {
+  margin-left: 16px;
+}
+
+.title-page {
+  color:#f4f4f4;
+  height: 100vh; /* Magic here */
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  text-align: center;
+}
+
+.training {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.training.reminder {
+  border-left: 5px solid green;
+}
+
+.training h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attrition-chart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hbtn {
+  padding: 8px 20px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hbtn--primary {
+  background-color: var(--primary);
+  color: #242424;
+  border: 1px solid var(--primary);
+}
+
+.hbtn--outline {
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 20px;
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease-out;
+}
+
+.hbtn--medium {
+  padding: 8px 20px;
+  font-size: 18px;
+}
+
+.hbtn--large {
+  padding: 12px 26px;
+  font-size: 20px;
+}
+
+.hbtn--mobile {
+  text-align: center;
+  border-radius: 4px;
+  width: 80%;
+  text-decoration: none;
+  font-size: 24px;
+  background-color: transparent;
+  color: #fff;
+  padding: 14px 20px;
+  border: 1px solid #fff;
+  transition: all 0.3s ease-out;
+}
+
+.hbtn--wide {
+  padding: 12px 64px;
+  font-size: 20px;
+}
+
+.hbtn--large:hover, .hbtn--medium:hover, .hbtn--mobile:hover {
+  transition: all 0.3s ease-out;
+  background: #fff;
+  color: #242424;
+}
+
+.hbtn--wide:hover {
+  color: #fff;
+  background-color: #ff7f7f;
+  transition: all 0.2s ease-out;
+}
+
+.blue {
+  background-color: #45b6fe;
+  color: #fff;
+  border: none;
+}
+
+.red {
+  background-color: #ff7f7f;
+  color: #fff;
+  border: none;
+}
+
+.green {
+  background-color: #7cb342;
+  color: #fff;
+  border: none;
+}
+
+.primary {
+  background-color: #242424;
+  color: #fff;
+  border: none;
+}
+
+.primary:hover {
+  background-color: #fff;
+  color: #242424;
+  border: none;
+}
+
+.green:hover {
+  background-color: #242424;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px transparent;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.dashboard-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  overflow: auto;
+  min-height: 300px;
+  border: 1px transparent;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.logout-btn {
+  display: inline-block;
+  background: #060b26;
+  color: #fff;
+  padding: 10px 10px;
+  margin: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: inherit;
+  font-weight: bold;
+  border: none;
+}
+
+.logout-btn:focus {
+  outline: none;
+}
+
+.logout-btn:active {
+  transform: scale(0.98);
+}
+
+.logout-btn-block {
+  display: block;
+  width: 100%;
+}
+
+.website-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: #060b26;
+}
+
+.maintanance-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.edit-data-btn {
+  align-items: right;
+  align-content: right;
+  margin-right: 0px;
+  margin-left: 200px;
+}
+
+/* after this one are bootstrap CSS */
+

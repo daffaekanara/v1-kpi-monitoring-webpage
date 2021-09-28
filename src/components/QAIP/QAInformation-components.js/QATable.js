@@ -86,13 +86,22 @@ const QATable = () => {
         fetch(url + '/' + year)
         .then(resp => resp.json())
         .then(resp => setData(resp))
+
+        fetch(url_title + '/' + year)
+      .then(resp => resp.json())
+      .then(resp => setDataTitles(resp))
+
+      dataTitles.map(title => {
+        const { id, project_title } = title
+        titleOption[ id ] = project_title
+      })
   }
 
   const columns=[
-    {title:'No.', field:'id', editable:false},
+    {title:'ID.', field:'id', editable:false},
     {title:'QA Type', field:'QAType'
     , lookup: { 'Plan - Regular': 'Plan - Regular', 'Plan - Thematic': 'Plan - Thematic', 'Regulatory': 'Regulatory', 'Special Review':'Special Review'}},
-    {title:'Audit Project', field:'auditProject', lookup: titleOption},
+    {title:'Audit Project', field:'auditProject'},
     {title:'Team Leader', field:'TL'},
     {title:'Division Head', field:'divisionHead'},
     {title:'QA Grading - Result', field:'result'
@@ -125,6 +134,8 @@ const QATable = () => {
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true,
                     filtering:true

@@ -60,7 +60,7 @@ const Editisle = () => {
     }
 
     const columns=[
-      {title:'No.', field:'id', editable:false},
+      {title:'ID.', field:'id', editable:false},
       {title:'Divison', field:'division'},
       {title:'Total Budget Head Count', field:'totalBudgetHC'},
       {title:'Total Head Count Awal Tahun', field:'totalHCNewYear'},
@@ -139,6 +139,8 @@ const Editisle = () => {
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true
                 }}

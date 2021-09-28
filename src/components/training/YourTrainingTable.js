@@ -21,6 +21,8 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
+import {Link} from '@material-ui/core'
+import moment from 'moment';
 
 //user data
 import useToken from '../../useToken';
@@ -54,11 +56,16 @@ const YourTrainingTable = () => {
   const decode = jwt.decode(token)
 
     const columns=[
-      {title:'No.', field:'id', editable:false},
+      {title:'ID.', field:'id', editable:false},
       {title:'Training Title', field:'trainingTitle'},
       {title:'Date', field:'date', type:'date'},
       {title:'Number of hours', field:'numberOfHours', type:'numeric'},
-      {title:'Remarks', field:'remark'}
+      {title:'Remarks', field:'remark'},
+      {title:'Download Proof', field:'download_proof',
+      render:rowData=>
+      <Link href={"http://156.67.217.92/api/admin/training_data/download/proof/id/" + rowData.id}>
+        {<p>download</p>}
+      </Link>}
   ]
 
     const url = 'http://156.67.217.92/api/training/table'
@@ -121,11 +128,30 @@ const YourTrainingTable = () => {
                         getData()
                         resolve()
                       })
+                  }),
+                  onRowUpdate: (newData, oldData) => new Promise((resolve, reject) => {
+                    //Backend call
+                    fetch(url + "/" + oldData.id, {
+                      method: "PATCH",
+                      headers: {
+                        'Content-type': "application/json"
+                      },
+                      body: JSON.stringify(newData)
+                    }).then(resp => resp.json())
+                      .then(resp => {
+                        getData()
+                        resolve()
+                      }).catch((err) => alert("Cannot input previous year or next year."));
+                      console.log(newData.date)
                   })
                 }}
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
+                    pageSize: 15,
+                    pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true,
                     filtering:true

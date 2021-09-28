@@ -1,13 +1,55 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Autocomplete } from '@material-ui/lab'
-import { TextField } from '@material-ui/core'
+import { TextField, Select, InputLabel, MenuItem } from '@material-ui/core'
+import axios from 'axios'
+import FileUploader from '../../../../FileUploader'
+import useToken from '../../../../../useToken'
+import jwt from 'jwt-decode'
 
 const AddTraining = ({ onAdd }) => {
     const [projectTitle, setProjectTitle] = useState('')
     const [attachment_proof, setProof] = useState('')
 
+    const [notifText, setNotifText] = useState('')
+
+    //setting year
+  const newDate = new Date()
+  const [year, setYear] = useState(newDate.getFullYear())
+
+  //user data
+  const { token, setToken } = useToken()
+  const jwt = require('jsonwebtoken')
+  const decode = jwt.decode(token)
+
+  //project title
+  const url_title = 'http://156.67.217.92/api/utils/project_by_nik_v2/' + year + '/' + decode.nik
+
+  const [datatitle, setDatatitle] = useState('')
+  const [QAType, setQAType] = useState('')
+  const [QAResults, setQAResults] = useState('')
+
+  //fetch DB project name
+  useEffect(() => {getDatatitle()}, [])
+
+  const getDatatitle = () => {
+    fetch(url_title)
+    .then(resp => resp.json())
+    .then(resp => {
+        setDatatitle(resp)
+        console.log(datatitle)
+      })
+  }
+
+  //API modification
+  const base_link = 'http://156.67.217.92/api/project/submit_pa_form'
+  const [link, setLink] = useState(base_link + '/' + year)
+
 const onSubmit = (e) => {
     e.preventDefault()
+
+    setNotifText('loading...')
+
+    setLink(base_link + '/' + year)
 
     if(!projectTitle) {
         alert('please insert Project Title')
@@ -18,42 +60,48 @@ const onSubmit = (e) => {
         return
     }
 
-    onAdd({ projectTitle, attachment_proof })
+    const formData = new FormData();
+  formData.append("projectTitle",projectTitle );
+  formData.append("attachment_proof", attachment_proof);
+
+  axios.post(link, formData)
+  .then((result) => {
+      setNotifText(result.data.Details);
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  })
 
     setProjectTitle('')
     setProof('')
 }
 
-const TitleList = [
-    {title: 'Project 1'},
-    {title: 'Project 2'},
-    {title: 'Project 3'},
-    {title: 'Project 4'}
-]
+const TitleList = datatitle
 
     return (
+        <div>
         <form className='add-form' onSubmit={onSubmit}>
             
-           <Autocomplete
+            <Autocomplete
+                id="projectTitle"
                 options={TitleList}
-                style={{ width: 300 }}
-                value={projectTitle} onChange={(e) => setProjectTitle(e.target.value)}
                 getOptionLabel={(option) => option.title}
+                onChange={(event, value) => setProjectTitle(value.title)}
+                style={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Project Title" variant="outlined" />}
             />
 
-            <div className='form-control'>
-                <label>PA Completion Proof</label>
-                <input type='file'
-                value={attachment_proof} onChange={(e) => setProof(e.target.value)}/>
-                
-            </div> 
+            <FileUploader
+                onFileSelectSuccess={(file) => setProof(file)}
+                onFileSelectError={({ error }) => alert(error)}
+            />
 
 
             <input type='submit' value='Upload' 
             className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
         </form>
-        
+        <h1 className='header'>{notifText}</h1>
+        </div>
     )
 }
 

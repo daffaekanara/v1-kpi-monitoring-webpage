@@ -5,7 +5,7 @@ const Budget = () => {
     return (
         <div className='budget'>
             <span></span>
-            <h1 className='header' style={{fontWeight: 'bold'}}>
+            <h1 className='header-page' style={{fontWeight: 'bold'}}>
                 BUDGET
             </h1>
             <BudgetData/>

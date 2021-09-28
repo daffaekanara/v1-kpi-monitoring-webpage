@@ -10,7 +10,7 @@ const AttritionRate = () => {
     <div className='container'>
       <h1 className='header'>Attrition Rate</h1>
       <span></span>
-      <div className='attrition-chart'>
+      <div>
         <div className='body'>
           <h3 className='header'>WBGM</h3>
           <WBGMRate/>

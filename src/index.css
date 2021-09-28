@@ -68,6 +68,14 @@ body {
   border-radius: 10px;
 }
 
+.container_sticky {
+  max-width: 300px;
+  min-height: 80px;
+  margin: auto;
+  padding: 30px;
+  background-color: #060b26 ;
+}
+
 .anouncement-container {
   max-width: 800px;
   margin: 30px auto;
@@ -99,6 +107,16 @@ body {
   border-radius: 10px;
 }
 
+.header_sticky {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: -15px;
+  text-align: center;
+  justify-content: center;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -106,6 +124,19 @@ body {
   margin-bottom: 20px;
   text-align: center;
   justify-content: center;
+}
+
+.header-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  text-shadow: 2px 0 white, -2px 0 white, 0 2px white, 0 -2px white, 1px 1px white, -1px -1px white, -1px 1px white, 1px -1px white;
+  z-index: 101;
 }
 
 .edit-data-header {
@@ -143,6 +174,15 @@ body {
   border: 1px solid #dddddd;
   padding: 1px;
   border-radius: 10px;
+}
+
+.btn-container-logout {
+  margin: 5px;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  padding: 1px;
+  border-radius: 10px;
+  z-index: 101;
 }
 
 .btn:focus {
@@ -497,6 +537,9 @@ span {
   justify-content: space-between;
   margin-bottom: 20px;
   background-color: #060b26;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .maintanance-btn {

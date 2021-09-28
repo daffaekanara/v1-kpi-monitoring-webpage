@@ -1,17 +1,32 @@
-import React, { useState } from 'react'
-import { Switch } from 'antd'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import Button from '../Button'
 
 const MaintananceBtn = () => {
 
-    const [toggle, setToggle] = useState(false);
+    const [text,setText] = useState('')
+    const [maintananceMode,setMaintananceMode] = useState()
 
-    const toggler = () => {
-        toggle ? setToggle(false) : setToggle(true);
-    }
+    useEffect(() => {
+        axios.get('http://156.67.217.92/api/admin/maintenance')
+        .then(res => {
+            setMaintananceMode(res.data.is_maintenance_mode)
+            console.log(res.data.is_maintenance_mode)
+            {
+                if (res.data.is_maintenance_mode) {
+                  return setText('MAINTANANCE MODE: ON');
+                } else {
+                  return setText('MAINTANANCE MODE: OFF');
+                }
+              }
+        })
+        
+    }, [])
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+
         const data = new FormData()
-        data.append('is_maintenance_mode', toggle)
+        data.append('is_maintenance_mode', e.currentTarget.checked)
         const res = fetch(
             'http://156.67.217.92/api/admin/maintenance',
             {
@@ -19,15 +34,30 @@ const MaintananceBtn = () => {
                 body: data
             }
         )
+        axios.get('http://156.67.217.92/api/admin/maintenance')
+        .then(res => {
+            setMaintananceMode(res.data.is_maintenance_mode)
+            console.log(res.data.is_maintenance_mode)
+            {
+                if (res.data.is_maintenance_mode) {
+                  return setText('MAINTANANCE MODE: ON');
+                } else {
+                  return setText('MAINTANANCE MODE: OFF');
+                }
+              }
+        })
     }
 
     return (
         <div className='header'>
+            
             <div className='maintanance-btn'>
-                <Switch onClick={toggler} onChange={onSubmit}/>
-                {toggle 
-                ? <span>Maintanance Mode: ON</span> 
-                : <span>Maintanance Mode: OFF</span> }
+                <Button color={'#ff9999'} 
+                text={'Change'} onClick={
+                    onSubmit
+
+                    }/>
+                {text}
             </div>
         </div>
     )
@@ -37,3 +67,4 @@ const MaintananceBtn = () => {
 //#b90e0a
 
 export default MaintananceBtn
+

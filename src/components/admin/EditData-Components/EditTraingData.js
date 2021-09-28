@@ -3,6 +3,8 @@ import Header from './training-data-components/Header'
 import EditIsle from './training-data-components/EditIsle'
 import AdminTraining from './training-data-components/AdminTraining'
 import UploadIsle from './training-data-components/UploadIsle'
+import HistoryEditIsle from './training-data-components/HistoryEditIsle'
+import AdminTrainingBudget from './training-data-components/AdminTrainingBudget'
 
 const EditTrainingData = () => {
 
@@ -31,6 +33,7 @@ const EditTrainingData = () => {
             }}
             />
             {showEditIsle && <EditIsle />}
+            {showEditIsle && <AdminTrainingBudget />}
             {showDownloadIsle && <AdminTraining />}
             {showUploadIsle && <UploadIsle />}
         </div>

@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import FileUploader from '../../FileUploader'
+import axios from 'axios'
+import moment from 'moment';
 
 //user data
 import useToken from '../../../useToken'
@@ -13,11 +16,11 @@ const AddTraining = ({ onAdd }) => {
 
     const [name, setName] = useState('')
     const [date, setDate] = useState('')
-    const [proof, setProof] = useState()
+    const [proof, setProof] = useState(null)
     const [duration_hours, setDurationDays] = useState(Number)
-    const [id, setId] = useState('')
-    const [remarks, setReamrks] = useState('')
-
+    const [id, setId] = useState(decode.nik)
+    const [remarks, setReamrks] = useState('-')
+    const [text, setText] = useState('')
     const [loading, setLoading] = useState(false)
 
 const onSubmit = (e) => {
@@ -43,43 +46,38 @@ const onSubmit = (e) => {
         alert('duration cannot be negative')
         return
     }
+    if (!proof) {
+        alert('Please attach proof')
+        return
+    }
 
-    onAdd({ name, date, duration_hours, id, remarks })
+    const formData = new FormData();
+  formData.append("name", name);
+  formData.append("date", date);
+  formData.append("proof", proof);
+  formData.append("duration_hours", duration_hours);
+  formData.append("id", id);
+  formData.append("remarks", remarks);
+
+  axios.post('http://156.67.217.92/api/training/form-file', formData)
+    .then((res) => {
+        console.log(res)
+        setText('Training Uploaded.')
+    })
+    .catch((err) => {
+        setText('Please Fill All of The Form.')
+    });
 
     setName('')
     setDate('')
     setDurationDays(Number)
-    setId('')
-    setReamrks('')
-}
-
-const uploadImage = async e => {
-    const files = e.target.files[0]
-    const data = new FormData()
-    data.append('file', files)
-    data.append('upload_preset', 'Training_proof')
-    setLoading(true)
-    const res = await fetch(
-    'https://api.cloudinary.com/v1_1/dxvniiksw/image/upload',
-    {
-        method: 'POST',
-        body: data
-    }
-)
-const file = await res.json()
-
-setProof(file.secure_url)
-setLoading(false)
+    setReamrks('-')
+    setProof(null)
 }
 
     return (
+        <div>
         <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>NIK</label>
-                <input type='number' placeholder={decode.nik} 
-                value={id} onChange={(e) => setId(decode.nik)}/>
-
-            </div>
             <div className='form-control'>
                 <label>Training</label>
                 <input type='name' placeholder='Name of Training' 
@@ -95,7 +93,7 @@ setLoading(false)
             <div className='form-control'>
                 <label>Date</label>
                 <input type='date' placeholder='Date'
-                value={date} onChange={(e) => setDate(e.target.value)}/>
+                value={date} onChange={(e) => setDate(e.target.value)} min={moment().format("YYYY-01-01")} max={moment().format("YYYY-12-31")}/>
                 
             </div> 
 
@@ -106,20 +104,17 @@ setLoading(false)
 
             </div>
             
-            <div className='form-control'>
-                <label>Attachment Proof</label>
-                <input type='file' placeholder='Upload an Image'
-                onChange={(uploadImage)}
-                />
-                
-            </div>
-
+            <FileUploader
+          onFileSelectSuccess={(file) => setProof(file)}
+          onFileSelectError={({ error }) => alert(error)}
+        />
             {loading && <h3>Loading Attachment...</h3>}
 
             <input type='submit' value='Save Training' 
             className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
         </form>
-        
+        <h1 className='header'>{text}</h1>
+        </div>
     )
 }
 

@@ -75,12 +75,12 @@ const DetailsIsle = () => {
     }
 
     const columns=[
-      {title:'No.', field:'id', editable:false},
+      {title:'ID.', field:'id', editable:false},
       {title:'NIK', field:'staffNIK', type:'numeric'},
       {title:'E-Mail', field:'email'},
-      {title:'Role in Website', field:'role', lookup: { 'User': 'User', 'Administrator': 'Administrator', 'Power User': 'Power User'}},
+      {title:'Role in Website', field:'role', editable: false},
       {title:'Staff Name', field:'staffName'},
-      {title:'Division', field:'divison', lookup: { 'WBGM': 'WBGM', 'RBA': 'RBA', 'BRDS': 'BRDS', 'TAD':'TAD', 'PPA':'PPA' }},
+      {title:'Division', field:'divison', editable:false},
       {title:'Stream', field:'stream'},
       {title:'Corporate Title', field:'corporateTitle'},
       {title:'Corporate Grade', field:'corporateGrade'},
@@ -99,19 +99,19 @@ const DetailsIsle = () => {
       {title:'Educaiton Major', field:'educationMajor'},
       {title:'Education Category', field:'educationCategory', lookup: { 'Management/Economy': 'Management/Economy', 'Information Technology': 'Information Technology', 'Others': 'Others' }},
       {title:'RMG Certification', field:'RMGCertification', lookup: { '-': '-', 'Level 1': 'Level 1', 'Level 2': 'Level 2', 'Level 3':'Level 3', 'Level 4':'Level 4', 'Level 5':'Level 5', 'In Progress':'In Progress' }},
-      {title:'CISA Certification', field:'CISA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CEH Certification', field:'CEH', lookup: {'1' : '1', '0' : '0'}},
-      {title:'ISO27001 Certification', field:'ISO', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CHFI Certification', field:'CHFI', lookup: {'1' : '1', '0' : '0'}},
-      {title:'IDEA', field:'IDEA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'Qualified Internal Auditor', field:'QualifiedIA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CBIA Certification', field:'CBIA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CIA Certification', field:'CIA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CPA Certification', field:'CPA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CA Certification', field:'CA', lookup: {'1' : '1', '0' : '0'}},
+      {title:'CISA Certification', field:'CISA',editable:false},
+      {title:'CEH Certification', field:'CEH',editable:false},
+      {title:'ISO27001 Certification', field:'ISO27001',editable:false},
+      {title:'CHFI Certification', field:'CHFI',editable:false},
+      {title:'IDEA', field:'IDEA',editable:false},
+      {title:'Qualified Internal Auditor', field:'QualifiedIA',editable:false},
+      {title:'CBIA Certification', field:'CBIA',editable:false},
+      {title:'CIA Certification', field:'CIA',editable:false},
+      {title:'CPA Certification', field:'CPA',editable:false},
+      {title:'CA Certification', field:'CA',editable:false},
+      {title:'Other Certification', field:'other_cert'},
       {title:'Internal Audit Background', field:'IABackgground', lookup: { 'true': 'true', 'false': 'false' }},
-      {title:'External Audit Background', field:'EABackground', lookup: { 'true': 'true', 'false': 'false' }},
-      {title:'Still in UOB', field:'active', lookup: { 'true': 'true', 'false': 'false' }}
+      {title:'External Audit Background', field:'EABackground', lookup: { 'true': 'true', 'false': 'false' }}
   ]
 
     return (
@@ -181,6 +181,8 @@ const DetailsIsle = () => {
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true,
                     filtering:true

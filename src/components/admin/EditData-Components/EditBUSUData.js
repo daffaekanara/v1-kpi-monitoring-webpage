@@ -3,6 +3,7 @@ import Header from './busu-data-components/Header'
 import EditIsle from './busu-data-components/EditIsle'
 import DownloadIsle from './busu-data-components/DownloadIsle'
 import UploadIsle from './busu-data-components/UploadIsle'
+import HistoryEditIsle from './busu-data-components/HistoryEditIsle'
 
 const EditBUSUData = () => {
 

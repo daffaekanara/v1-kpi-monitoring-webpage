@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { BrowserRouter, Switch, Route, Link} from "react-router-dom"
+import DetailsButton from '../profile/About-components/DetailsButton'
 
 const ContributeAudit = () => {
 
@@ -105,6 +107,9 @@ const ContributeAudit = () => {
         }}
         plugins={[ChartDataLabels]}
       />
+      <div className='header'>
+      <Link to='/Audit_news_details'><DetailsButton/></Link>
+      </div>
     </div>
   )
 }

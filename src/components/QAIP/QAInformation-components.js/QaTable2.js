@@ -128,7 +128,7 @@ const QaTable2 = () => {
                   onRowUpdate: (newData, oldData) => new Promise((resolve, reject) => {
                     //Backend call
                     fetch(url + "/" + oldData.id, {
-                      method: "PUT",
+                      method: "PATCH",
                       headers: {
                         'Content-type': "application/json"
                       },
@@ -157,6 +157,8 @@ const QaTable2 = () => {
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true
                 }}

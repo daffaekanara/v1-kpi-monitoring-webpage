@@ -15,6 +15,7 @@ const RBARate = () => {
   const [chartData, setChartData] = useState({})
   const [yData, setYData] = useState([])
   const [xData, setXData] = useState([])
+  const [text_inside, setText_inside] = useState('')
 
   useEffect(() => {
     chart()
@@ -28,7 +29,7 @@ const RBARate = () => {
     //fetch data
     axios.get(link)
     .then(res => {
-      console.log(res)
+      setText_inside(res.data[0].rate)
       for(const dataObj of res.data){
         theYData1.push(dataObj.rate) //ambil data y
         theXData.push(dataObj.title) //ambil data x
@@ -65,7 +66,7 @@ const RBARate = () => {
     //fetch data
     axios.get(link)
     .then(res => {
-      console.log(res)
+      setText_inside(res.data[0].rate)
       for(const dataObj of res.data){
         theYData1.push(dataObj.rate) //ambil data y
         theXData.push(dataObj.title) //ambil data x
@@ -103,6 +104,7 @@ const RBARate = () => {
             <input type='submit' value='Save' 
             className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
           </form>
+          <h1 className='header'><b>{"Attrition Rate: " + text_inside + "%"}</b></h1>
       <Doughnut 
         data={chartData}
         options={{

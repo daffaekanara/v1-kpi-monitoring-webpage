@@ -17,6 +17,7 @@ const DataChartTrainings = () => {
   //setting year
   const newDate = new Date()
   const year = newDate.getFullYear()
+  const [text_inside, setText_inside] = useState('')
 
   //API modification
   const base_link = 'http://156.67.217.92/api/profile/data_chart_trainings'
@@ -35,7 +36,7 @@ const DataChartTrainings = () => {
     //fetch data
     axios.get(link)
     .then(res => {
-      console.log(res)
+      setText_inside(res.data[0].total_training)
       for(const dataObj of res.data){
         theYData1.push(parseInt(dataObj.total_training)) //ambil data y
         theXData.push(dataObj.title) //ambil data x
@@ -68,7 +69,7 @@ const DataChartTrainings = () => {
 
   return (
     <div className='container'>
-      <h1>Your Training (in percentage %)</h1>
+      <h1>{"Your Training this year: " + text_inside + "% done."}</h1>
       <Doughnut 
         data={chartData}
         options={{

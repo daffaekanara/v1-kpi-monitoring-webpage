@@ -3,6 +3,7 @@ import Header from './audit-project-components/Header'
 import EditIsle from './audit-project-components/EditIsle'
 import UploadPACompletion from './audit-project-components/UploadPACompletion'
 import UploadIsle from './audit-project-components/UploadIsle'
+import HistoryEditIsle from './audit-project-components/HistoryEditIsle'
 
 const EditEmployeeData = () => {
 

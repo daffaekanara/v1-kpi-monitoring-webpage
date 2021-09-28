@@ -74,9 +74,12 @@ export const SidebarData = [
         icon: <FaIcons.FaKey />,
         cName: 'nav-text'
     },
-    {},
-    {},
-    {},
+    {
+        title:'History Page',
+        path:'/history_page',
+        icon: <AiIcons.AiOutlineClockCircle />,
+        cName: 'nav-text'
+    },
     {},
     {},
     {},

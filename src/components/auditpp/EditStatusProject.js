@@ -21,6 +21,7 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
+import {Link} from '@material-ui/core'
 
 //user data
 import useToken from '../../useToken';
@@ -48,7 +49,7 @@ const tableIcons = {
 
 const EditStatusProject = () => {
 
-    const url = 'http://156.67.217.92/api/admin/audit_projects_data'
+    const url = 'http://156.67.217.92/api/projects/edit_project_table'
 
     //user data
   const { token, setToken } = useToken()
@@ -83,15 +84,20 @@ const EditStatusProject = () => {
     const auditPlanThisYear = (year + ' Audit Plan')
 
     const columns=[
-      {title:'No.', field:'id', editable:false},
+      {title:'ID.', field:'id', editable:false},
       {title: auditPlanThisYear, field:'auditPlan', editable:false},
-      {title:'Audit Division', field:'division', lookup: { 'WBGM': 'WBGM', 'RBA': 'RBA', 'BRDS': 'BRDS', 'TAD':'TAD', 'PPA':'PPA' }},
-      {title:'Status', field:'status', lookup: { 'Not Started': 'Not Started', 'Planning': 'Planning', 'Fieldwork': 'Fieldwork', 'Reporting':'Reporting', 'Completed':'Completed' }},
+      {title:'Audit Division', field:'division'},
+      {title:'Status', field:'status', lookup: { 'Not Started': 'Not Started', 'Planning': 'Planning', 'Fieldwork': 'Fieldwork', 'Reporting':'Reporting','Sign-off':'Sign-off', 'Completed':'Completed' }},
       {title:'Use of DA', field:'useOfDA', lookup: { 'true': 'true', 'false': 'false' }},
-      {title:'Year', field:'year', type:'numeric'},
+      {title:'Year', field:'year', type:'numeric', editable:false},
       {title:'Is Carried Over', field:'is_carried_over', lookup: { 'true': 'true', 'false': 'false' }},
       {title:'Timely Report', field:'timely_report', lookup: { 'true': 'true', 'false': 'false' }},
-      {title:'PA Completion', field:'completion_PA', editable:false}
+      {title:'PA Completion', field:'completion_PA', editable:false},
+      {title:'Download PA Completion', field:'download_proof',
+      render:rowData=>
+      <Link href={"http://156.67.217.92/api/admin/audit_project_data/download/pa/id/" + rowData.id}>
+        {<p>download</p>}
+      </Link>}
   ]
 
     return (
@@ -116,7 +122,7 @@ const EditStatusProject = () => {
                   onRowUpdate: (newData, oldData) => new Promise((resolve, reject) => {
                     //Backend call
                     fetch(url + "/" + oldData.id, {
-                      method: "PUT",
+                      method: "PATCH",
                       headers: {
                         'Content-type': "application/json"
                       },
@@ -125,12 +131,14 @@ const EditStatusProject = () => {
                       .then(resp => {
                         getData()
                         resolve()
-                      })
+                      }).catch((err) => alert("Cannot input previous year or next year."));
                   })
                 }}
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true,
                     filtering:true

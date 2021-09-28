@@ -5,7 +5,7 @@ import QAInformation from '../components/QAIP/QAInformation'
 const QAResults = () => {
     return (
         <div>
-            <h1 className='header' style={{fontWeight: 'bold'}}>
+            <h1 className='header-page' style={{fontWeight: 'bold'}}>
                 QA Results
             </h1>
             <QAInformation/>

@@ -10,7 +10,13 @@ const Header = ({ title, onAdd, showAdd }) => {
         <header className='header'>
            <h1>Upload Certificate</h1> 
            <span></span>
-           {location.pathname === '/' && (
+           {location.pathname === '/profile' && (
+               
+               <Button color={showAdd ? '#FF6961' : '#3cb065'} 
+                text={showAdd ? 'close' : 'Add'} 
+                onClick={onAdd}
+            />)}
+            {location.pathname === '/' && (
                
                <Button color={showAdd ? '#FF6961' : '#3cb065'} 
                 text={showAdd ? 'close' : 'Add'} 

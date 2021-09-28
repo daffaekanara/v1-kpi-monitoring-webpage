@@ -17,7 +17,7 @@ const AuditPlanProgress = () => {
     return (
         <div className='audit-plan-progres'>
             <span></span>
-            <h1 className='header' style={{fontWeight: 'bold'}}>
+            <h1 className='header-page' style={{fontWeight: 'bold'}}>
                 AUDIT PROJECTS
             </h1>
             {(decode.role === 'Power User') ? (
@@ -34,7 +34,7 @@ const AuditPlanProgress = () => {
                 </>
             ) : (
                 <>
-                <AuditProjects/>
+                <UploadPACompletion/>
                 <EditStatusProject/>
                 </>
             )}

@@ -10,7 +10,7 @@ const Header = ({ title, onAdd, showAdd }) => {
         <header className='header'>
            <h1>Input Training</h1> 
            <span></span>
-           {location.pathname === '/' && (
+           {location.pathname === '/training' && (
                
                <Button color={showAdd ? '#FF6961' : '#3cb065'} 
                 text={showAdd ? 'close' : 'Add training'} 

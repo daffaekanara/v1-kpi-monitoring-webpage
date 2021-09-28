@@ -68,15 +68,19 @@ const EmployeeCertification = () => {
           <Header onAdd={() => setShowAddTraining(!showAddTraining)}
             showAdd={showAddTraining}
           />        
+          <Route path='/profile' exact render={(props) => (
+            <>
+              {showAddTraining && <Header2/>}
+              {showAddTraining && <AddTraining/>}
+            </>
+          )} /> 
           <Route path='/' exact render={(props) => (
             <>
               {showAddTraining && <Header2/>}
               {showAddTraining && <AddTraining/>}
             </>
           )} /> 
-          <Route path='/about' component={About} />
-        <Footer />
-        </div>
+          </div>
       </Router>
     )
   }

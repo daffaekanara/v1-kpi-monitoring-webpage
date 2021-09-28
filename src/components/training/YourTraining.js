@@ -26,7 +26,7 @@ const Training = () => {
   
   //fetch Trainings
   const fetchTrainings = async () => {
-    const res = await fetch('http://156.67.217.91/api/training/form')
+    const res = await fetch('http://156.67.217.92/api/training/form')
     const data = await res.json() //res.json cuma buat fake rest API BE
   
     console.log(data)
@@ -44,7 +44,9 @@ const Training = () => {
     })
     console.log(JSON.stringify(training))
     
-    const data = await res.json()
+    //const data = await res.json()
+
+    //setTrainings([...trainings, data])
   
     
   //  const id = Math.floor(Math.random() * 10000) + 1
@@ -66,16 +68,15 @@ const Training = () => {
           <Header onAdd={() => setShowAddTraining(!showAddTraining)}
             showAdd={showAddTraining}
           />        
-          <Route path='/' exact render={(props) => (
+          <Route path='/training' exact render={(props) => (
             <>
               {showAddTraining && <Anouncement/>}
               {showAddTraining && <Header2/>}
-              {showAddTraining && <AddTraining onAdd={addTraining}/>}
+              {showAddTraining && <AddTraining/>}
               {trainings.length > 0 && <Header3/>}
             </>
           )} /> 
-          <Route path='/about' component={About} />
-        <Footer />
+          
         </div>
       </Router>
     )

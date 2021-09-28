@@ -48,7 +48,7 @@ const tableIcons = {
 
 const ViewBUSU = () => {
 
-    const url = 'http://156.67.217.92/api/engagement/total_by_division'
+    const url = 'http://156.67.217.92/api/engagement/user_div_table'
 
     //user data
   const { token, setToken } = useToken()
@@ -74,14 +74,14 @@ const ViewBUSU = () => {
 
     const onSubmit = (e) => {
       e.preventDefault()
-        fetch(url + '/' + decode.div + '/' + year)
+        fetch(url + '/' + decode.nik + '/' + year)
         .then(resp => resp.json())
         .then(resp => setData(resp))
   }
 
     const columns=[
-      {title:'No.', field:'id', editable:false},
-      {title:'Division', field:'division', lookup: { 'WBGM': 'WBGM', 'RBA': 'RBA', 'BRDS': 'BRDS', 'TAD':'TAD', 'PPA':'PPA' }},
+      {title:'ID.', field:'id', editable:false},
+      {title:'Division', field:'division'},
       {title:'Workshop / Regular Meeting', field:'WorRM', lookup: { 'Regular Meeting': 'Regular Meeting', 'Workshop': 'Workshop' }},
       {title:'Activity', field:'activity'},
       {title:'Date', field:'date', type:'date'}
@@ -109,6 +109,8 @@ const ViewBUSU = () => {
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true,
                     filtering:true

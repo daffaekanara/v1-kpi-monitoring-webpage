@@ -4,6 +4,7 @@ import EditIsle from './qaip-data-components/EditIsle'
 import DownloadIsle from './qaip-data-components/DownloadIsle'
 import UploadIsle from './qaip-data-components/UploadIsle'
 import InputQA from './qaip-data-components/InputQA'
+import HistoryEditIsle from './qaip-data-components/HistoryEditIsle'
 
 const EditQAIPData = () => {
 

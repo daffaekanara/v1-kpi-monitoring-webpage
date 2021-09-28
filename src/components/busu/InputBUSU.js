@@ -21,6 +21,7 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
+import {Link} from '@material-ui/core'
 
 //user data
 import useToken from '../../useToken';
@@ -48,7 +49,7 @@ const tableIcons = {
 
 const InputBUSU = () => {
 
-    const url = 'http://156.67.217.92/api/engagement/total_by_division'
+    const url = 'http://156.67.217.92/api/engagement/input_table'
 
     //user data
   const { token, setToken } = useToken()
@@ -80,16 +81,21 @@ const InputBUSU = () => {
   }
 
     const columns=[
-      {title:'No.', field:'id', editable:false},
+      {title:'ID.', field:'id', editable:false},
       {title:'Division', field:'division', editable:false},
       {title:'Workshop / Regular Meeting', field:'WorRM', lookup: { 'Regular Meeting': 'Regular Meeting', 'Workshop': 'Workshop' }},
       {title:'Activity', field:'activity'},
-      {title:'Date', field:'date', type:'date'}
+      {title:'Date', field:'date', type:'date'},
+      {title:'Download Proof', field:'download_proof',
+      render:rowData=>
+      <Link href={"http://156.67.217.92/api/admin/busu_data/download/proof/id/" + rowData.id}>
+        {<p>download</p>}
+      </Link>}
   ]
 
     return (
         <div className='container'>
-            <h1>Input New BU/SU Engagement</h1>
+            <h1>Edit Your BU/SU Engagement</h1>
           <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control'>
                 <label>Year</label>
@@ -106,24 +112,10 @@ const InputBUSU = () => {
                 data={data}
                 columns={columns}
                 editable={{
-                    onRowAdd: (newData) => new Promise((resolve, reject) => {
-                        //Backend call
-                        fetch(url + '/' + decode.nik, {
-                          method: "POST",
-                          headers: {
-                            'Content-type': "application/json"
-                          },
-                          body: JSON.stringify(newData)
-                        }).then(resp => resp.json())
-                          .then(resp => {
-                            getData()
-                            resolve()
-                          })
-                      }),
                   onRowUpdate: (newData, oldData) => new Promise((resolve, reject) => {
                     //Backend call
                     fetch(url + "/" + oldData.id, {
-                      method: "PUT",
+                      method: "PATCH",
                       headers: {
                         'Content-type': "application/json"
                       },
@@ -132,7 +124,7 @@ const InputBUSU = () => {
                       .then(resp => {
                         getData()
                         resolve()
-                      })
+                      }).catch((err) => alert("Cannot input previous year or next year."));
                   }),
                   onRowDelete: (oldData) => new Promise((resolve, reject) => {
                     //Backend call
@@ -147,25 +139,15 @@ const InputBUSU = () => {
                         getData()
                         resolve()
                       })
-                  }),
-                  onBulkUpdate: (newData, oldData) => new Promise((resolve, reject) => {
-                    //Backend call
-                    fetch(url + "/" + oldData.id, {
-                      method: "PATCH",
-                      headers: {
-                        'Content-type': "application/json"
-                      },
-                      body: JSON.stringify(newData)
-                    }).then(resp => resp.json())
-                      .then(resp => {
-                        getData()
-                        resolve()
-                      })
                   })
                 }}
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
+                    pageSize: 15,
+                    pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
                     exportButton:true,
                     filtering:true

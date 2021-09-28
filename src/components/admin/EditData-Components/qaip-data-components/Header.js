@@ -12,7 +12,6 @@ const Header = ({ title, onEditClick, onDownloadClick, onUploadClick }) => {
             <span></span>
             <Button color='#777777' text='Edit' onClick={onEditClick}/>
             <Button color='#528aae' text='Input QA Data' onClick={onDownloadClick}/>
-            <Button color='#3cb065' text='Upload DB' onClick={onUploadClick}/>
         </header>
     )
 }

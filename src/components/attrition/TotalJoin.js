@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { BrowserRouter, Switch, Route, Link} from "react-router-dom"
+import DetailsButton from '../profile/About-components/DetailsButton'
 
 const TotalJoin = () => {
 
@@ -27,6 +29,9 @@ const TotalJoin = () => {
     let theYData2 = []
     let theYData3 = []
     let theYData4 = []
+    let theYData5 = []
+    let theYData6 = []
+    let theYData7 = []
     let theXData = []
 
     //fetch data
@@ -37,7 +42,10 @@ const TotalJoin = () => {
         theYData1.push(parseInt(dataObj.headcounts)) //ambil data y
         theYData2.push(parseInt(dataObj.join)) //ambil data y
         theYData3.push(parseInt(dataObj.resign)) //ambil data y
-        theYData4.push(parseInt(dataObj.transfer)) //ambil data y
+        theYData4.push(parseInt(dataObj.transfer_in)) //ambil data y
+        theYData5.push(parseInt(dataObj.transfer_out)) //ambil data y
+        theYData6.push(parseInt(dataObj.rotation_in)) //ambil data y
+        theYData7.push(parseInt(dataObj.rotation_out)) //ambil data y
         theXData.push(dataObj.division) //ambil data x
       }
       //PS: jangan lupa pake parseInt kalau datanya itu integer buat di atas
@@ -61,10 +69,25 @@ const TotalJoin = () => {
             backgroundColor:'#8bc34a'
           },
           {
-            label:'Transfer',
+            label:'Transfer In',
             data: theYData4,
             backgroundColor:'#b19cd9'
-          }
+          },
+          {
+            label:'Transfer Out',
+            data: theYData3,
+            backgroundColor:'#abdee6'
+          },
+          {
+            label:'Rotation In',
+            data: theYData3,
+            backgroundColor:'#cbaacb'
+          },
+          {
+            label:'Rotation Out',
+            data: theYData3,
+            backgroundColor:'#c6dbda'
+          },
         ]
       })
     })
@@ -146,6 +169,9 @@ const TotalJoin = () => {
         }}
         plugins={[ChartDataLabels]}
       />
+      <div className='header'>
+      <Link to='/Staff_attrition_details'><DetailsButton/></Link>
+      </div>
     </div>
   )
 }

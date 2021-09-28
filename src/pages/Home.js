@@ -12,14 +12,17 @@ import AgeGroup from '../components/home/IADemographic-component/AgeGroup'
 import Certification from '../components/home/IADemographic-component/Certification'
 import Certification2 from '../components/home/IADemographic-component/Certification2'
 import AuditEXP from '../components/home/IADemographic-component/AuditEXP'
+import 'react-sticky-header/styles.css';
+import StickyHeader from 'react-sticky-header'
 
 const Home = () => {
     return (
         <div>
+            <span></span>
+            <h1 className='header-page' style={{fontWeight: 'bold'}}>
+                DASHBOARD
+            </h1>
             <div className='dashboard-container'>
-                <h1 className='header' style={{fontWeight: 'bold'}}>
-                    DASHBOARD
-                </h1>
                 <span></span>
                 <div className='header'>
                     <AuditProjects/>

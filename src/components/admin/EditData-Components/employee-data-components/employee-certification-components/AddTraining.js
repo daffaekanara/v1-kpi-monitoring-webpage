@@ -17,6 +17,7 @@ const AddTraining = ({ onAdd }) => {
     const [CA_cert, setCA_cert] = useState('')
     const [CBIA_cert, setCBIA_cert] = useState('')
     const [CPA_cert, setCPA_cert] = useState('')
+    const [Other_cert, setOther_cert] = useState('')
 
     const [NIK,setNIK] = useState('999')
 
@@ -62,6 +63,9 @@ const AddTraining = ({ onAdd }) => {
     
     const [loadingCPA, setLoadingCPA] = useState(false)
     const [uploadedCPA, setUploadedCPA] = useState(false)
+
+    const [loadingOther, setLoadingOther] = useState(false)
+    const [uploadedOther, setUploadedOther] = useState(false)
     
 
     const uploadSMR_1 = async e => {
@@ -342,6 +346,26 @@ const uploadSMR_5 = async e => {
             setCPA_cert(file.secure_url)
             setLoadingCPA(false)
             setUploadedCPA(true)
+    }
+
+    const uploadOther = async e => {
+        const files = e.target.files[0]
+            const data = new FormData()
+            data.append('cert_file', files)
+            setLoadingOther(true)
+            setUploadedOther(false)
+            const res = await fetch(
+                'http://156.67.217.92/api/admin/employee_data/cert/Other/' + NIK,
+                {
+                    method: 'POST',
+                    body: data
+                }
+            )
+            const file = await res.json()
+
+            setOther_cert(file.secure_url)
+            setLoadingOther(false)
+            setUploadedOther(true)
     }
 
     const onSubmit = (ev) => {
@@ -628,6 +652,26 @@ const uploadSMR_5 = async e => {
             setUploadedCPA(true)
     }
 
+    const uploadOther = async e => {
+        const files = e.target.files[0]
+            const data = new FormData()
+            data.append('cert_file', files)
+            setLoadingOther(true)
+            setUploadedOther(false)
+            const res = await fetch(
+                'http://156.67.217.92/api/admin/employee_data/cert/Other/' + NIK,
+                {
+                    method: 'POST',
+                    body: data
+                }
+            )
+            const file = await res.json()
+
+            setOther_cert(file.secure_url)
+            setLoadingOther(false)
+            setUploadedOther(true)
+    }
+
     }
 
     return (
@@ -787,6 +831,18 @@ const uploadSMR_5 = async e => {
             {loadingSMR_5 && <h3>Uploading...</h3>}
             {uploadedSMR_5 && <div className="upload-alert-container"><h3><b>SMR level 5 File Uploaded.</b></h3></div>}
 
+            {loadingSMR_5 && <h3>Uploading...</h3>}
+            {uploadedSMR_5 && <div className="upload-alert-container"><h3><b>SMR level 5 File Uploaded.</b></h3></div>}
+
+            <div className='form-control'>
+                <label>Others</label>
+                <input type='file'
+                onChange={uploadOther}/>
+                
+            </div>
+
+            {loadingOther && <h3>Uploading...</h3>}
+            {uploadedOther && <div className="upload-alert-container"><h3><b>Certificate File Uploaded.</b></h3></div>}
         </form>
         </div>
     )

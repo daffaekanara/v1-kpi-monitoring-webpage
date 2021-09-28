@@ -2,6 +2,9 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Bar } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import DetailsButton from '../profile/About-components/DetailsButton'
+import { BrowserRouter, Switch, Route, Link} from "react-router-dom"
+import Profile from '../../pages/Profile'
 
 const TrainingBudget = () => {
 
@@ -112,6 +115,10 @@ const TrainingBudget = () => {
 
   }
 
+  const openDetails = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div className='container'>
       <h1>Training Budget</h1>
@@ -133,6 +140,9 @@ const TrainingBudget = () => {
         }}
         plugins={[ChartDataLabels]}
       />
+      <div className='header'>
+      <Link to='/training_budget_details'><DetailsButton/></Link>
+      </div>
     </div>
   )
 }

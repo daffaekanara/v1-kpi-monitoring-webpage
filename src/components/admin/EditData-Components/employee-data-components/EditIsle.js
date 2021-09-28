@@ -21,6 +21,8 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -45,6 +47,8 @@ const tableIcons = {
 const Editisle = () => {
 
     const url = 'http://156.67.217.92/api/admin/employee_data/table_data'
+    const url_division = 'http://156.67.217.92/api/utils/divs'
+    const url_pdf = 'http://156.67.217.92/api/utils/employee/show_aas'
 
     //date data
     const newDate = new Date()
@@ -53,6 +57,8 @@ const Editisle = () => {
     const year = newDate.getFullYear()
     
     const [data, setData] = useState([])
+    const [dataDivision, setDataDivision] = useState([])
+    const [dataPDF, setDataPDF] = useState()
 
     //fetch DB
     useEffect(() => {getData()}, [])
@@ -63,13 +69,38 @@ const Editisle = () => {
       .then(resp => setData(resp))
     }
 
+    //fetch DB divisions name
+    useEffect(() => {getDataDivision()}, [])
+
+    const getDataDivision = () => {
+      fetch(url_division)
+      .then(resp => resp.json())
+      .then(resp => setDataDivision(resp))
+    }
+
+    //make the look up division option
+    const divisionOption = {}
+    dataDivision.map(title => {
+      const { id, division } = title
+      divisionOption[ id ] = division
+    })
+
+    //fetch DB download PDF
+    useEffect(() => {getDataPDF()}, [])
+  
+    const getDataPDF = () => {
+      fetch(url_pdf)
+      .then(resp => resp.json())
+      .then(resp => setDataPDF(resp))
+    }
+
     const columns=[
-      {title:'No.', field:'id', editable:false},
+      { title:'ID.', field:'id', editable:false},
       {title:'NIK', field:'staffNIK', type:'numeric'},
       {title:'E-Mail', field:'email'},
       {title:'Role in Website', field:'role', lookup: { 'User': 'User', 'Administrator': 'Administrator', 'Power User': 'Power User'}},
       {title:'Staff Name', field:'staffName'},
-      {title:'Division', field:'divison', lookup: { 'WBGM': 'WBGM', 'RBA': 'RBA', 'BRDS': 'BRDS', 'TAD':'TAD', 'PPA':'PPA' }},
+      {title:'Division', field:'divison', lookup: divisionOption},
       {title:'Stream', field:'stream'},
       {title:'Corporate Title', field:'corporateTitle'},
       {title:'Corporate Grade', field:'corporateGrade'},
@@ -87,24 +118,85 @@ const Editisle = () => {
       {title:'Education Level', field:'educationLevel', lookup: { 'Bachelor': 'Bachelor', 'Master': 'Master', 'Doctoral' : 'Doctoral' }},
       {title:'Educaiton Major', field:'educationMajor'},
       {title:'Education Category', field:'educationCategory', lookup: { 'Management/Economy': 'Management/Economy', 'Information Technology': 'Information Technology', 'Others': 'Others' }},
-      {title:'RMG Certification', field:'RMGCertification', lookup: { '-': '-', 'In Progress':'In Progress' }},
-      {title:'CISA Certification', field:'CISA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CEH Certification', field:'CEH', lookup: {'1' : '1', '0' : '0'}},
-      {title:'ISO27001 Certification', field:'ISO', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CHFI Certification', field:'CHFI', lookup: {'1' : '1', '0' : '0'}},
-      {title:'IDEA', field:'IDEA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'Qualified Internal Auditor', field:'QualifiedIA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CBIA Certification', field:'CBIA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CIA Certification', field:'CIA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CPA Certification', field:'CPA', lookup: {'1' : '1', '0' : '0'}},
-      {title:'CA Certification', field:'CA', lookup: {'1' : '1', '0' : '0'}},
+      {title:'RMG Certification', field:'RMGCertification', lookup: { '-': '-', 'In Progress':'In Progress', 'Level 1':'Level 1', 'Level 2':'Level 2', 'Level 3':'Level 3', 'Level 4':'Level 4', 'Level 5':'Level 5' }},
+      {title:'CISA Certification', field:'CISA', editable:false},
+      {title:'CEH Certification', field:'CEH', editable:false},
+      {title:'ISO27001 Certification', field:'ISO27001', editable:false},
+      {title:'CHFI Certification', field:'CHFI', editable:false},
+      {title:'IDEA', field:'IDEA', editable:false},
+      {title:'Qualified Internal Auditor', field:'QualifiedIA', editable:false},
+      {title:'CBIA Certification', field:'CBIA', editable:false},
+      {title:'CIA Certification', field:'CIA', editable:false},
+      {title:'CPA Certification', field:'CPA', editable:false},
+      {title:'CA Certification', field:'CA', editable:false},
+      {title:'Other Certification', field:'other_cert', editable:false},
       {title:'Internal Audit Background', field:'IABackgground', lookup: { 'true': 'true', 'false': 'false' }},
       {title:'External Audit Background', field:'EABackground', lookup: { 'true': 'true', 'false': 'false' }},
-      {title:'Still in UOB', field:'active', lookup: { 'true': 'true', 'false': 'false' }}
+      {title:'Still in IA', field:'active', lookup: { 'true': 'true', 'false': 'false' }}
   ]
+
+  const doc = new jsPDF({
+    orientation: 'l', 
+        unit: 'pt', 
+        format: [2000, 4000]
+  });
+
+  const onDownload = () => {
+
+
+    doc.autoTable({
+        head: [
+            [
+            'ID',
+            'NIK',
+            'E-Mail',
+            'Role in Website',
+            'Staff Name',
+            'Division',
+            'Stream',
+            'Corporate Title',
+            'Corporate Grade',
+            'Date of Birth',
+            'Date Start First Employment',
+            'Date Join UOB',
+            'Date Join IA Function',
+            'As of Now',
+            'Age',
+            'Gen',
+            'Gender',
+            'Years of Audit Experience in UOB',
+            'Years of Audit Experience outside UOB',
+            'Total Audit Experience',
+            'Education Level',
+            'Educaiton Major',
+            'Education Category',
+            'RMG Certification',
+            'CISA Certification',
+            'CEH Certification',
+            'ISO27001 Certification',
+            'CHFI Certification',
+            'IDEA',
+            'Qualified Internal Auditor',
+            'CBIA Certification',
+            'CIA Certification',
+            'CPA Certification',
+            'CA Certification',
+            'Other Certification',
+            'Internal Audit Background',
+            'External Audit Background',
+            'Still in IA'
+        ],
+        
+    ],
+        body: dataPDF
+      })
+
+    doc.save("Employee Data.pdf");
+}
 
     return (
         <div>
+          <button onClick={onDownload}>Download Database as PDF</button>
             <MaterialTable
                 title='Employee'
                 data={data}
@@ -170,8 +262,11 @@ const Editisle = () => {
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
+                    toolbar: true,
+                    paging: true,
                     addRowPosition:'first',
-                    exportButton:true,
                     filtering:true
                 }}
                 icons={tableIcons}

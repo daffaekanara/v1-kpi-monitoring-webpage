@@ -9,12 +9,6 @@ import * as GiIcons from 'react-icons/gi'
 
 export const SidebarDataUser = [
     {
-        title:'Dashboard',
-        path:'/home',
-        icon: <AiIcons.AiFillHome />,
-        cName: 'nav-text'
-    },
-    {
         title:'Profile',
         path:'/profile',
         icon: <CgIcons.CgProfile />,
@@ -27,15 +21,15 @@ export const SidebarDataUser = [
         cName: 'nav-text'
     },
     {
-        title:'CSF',
-        path:'/CSF',
-        icon: <AiIcons.AiFillStar />,
-        cName: 'nav-text'
-    },
-    {
         title:'BU/SU Engagement',
         path:'/BUSU',
         icon: <AiIcons.AiFillWechat />,
+        cName: 'nav-text'
+    },
+    {
+        title:'CSF',
+        path:'/CSF',
+        icon: <AiIcons.AiFillStar />,
         cName: 'nav-text'
     },
     {

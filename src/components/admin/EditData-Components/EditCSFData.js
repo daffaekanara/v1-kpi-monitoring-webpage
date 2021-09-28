@@ -3,6 +3,7 @@ import Header from './csf-data-components/Header'
 import EditIsle from './csf-data-components/EditIsle'
 import DownloadIsle from './csf-data-components/DownloadIsle'
 import UploadIsle from './csf-data-components/UploadIsle'
+import HistoryEditIsle from './csf-data-components/HistoryEditIsle'
 
 const EditCSFData = () => {
 

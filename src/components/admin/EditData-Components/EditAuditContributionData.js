@@ -3,6 +3,7 @@ import Header from './audit-contribution-components/Header'
 import EditIsle from './audit-contribution-components/EditIsle'
 import DownloadIsle from './audit-contribution-components/DownloadIsle'
 import UploadIsle from './audit-contribution-components/UploadIsle'
+import HistoryEditIsle from './audit-contribution-components/HistoryEditIsle'
 
 const EditAuditContributionData = () => {
 

@@ -21,6 +21,8 @@ import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import axios from 'axios'
 import Alert from '@material-ui/lab/Alert';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -46,6 +48,7 @@ const Editisle = () => {
 
     const url = 'http://156.67.217.92/api/admin/csf_data/table_data'
     const url_title = 'http://156.67.217.92/api/utils/title_project'
+    const base_url_pdf = 'http://156.67.217.92/api/utils/csf/show_aas/year/'
 
     //date data
     const newDate = new Date()
@@ -55,6 +58,8 @@ const Editisle = () => {
     
     const [data, setData] = useState([])
     const [dataTitles, setDataTitles] = useState([])
+    const [dataPDF, setDataPDF] = useState()
+    const [url_pdf, seturl_pdf] = useState(base_url_pdf + year)
 
 
     //fetch DB
@@ -84,54 +89,102 @@ const Editisle = () => {
 
     const onSubmit = (e) => {
       e.preventDefault()
-        fetch(url + '/' + year)
+        fetch(url + year)
         .then(resp => resp.json())
         .then(resp => setData(resp))
   }
 
+  //fetch DB download PDF
+  useEffect(() => {getDataPDF()}, [])
+  
+  const getDataPDF = () => {
+    fetch(url_pdf)
+    .then(resp => resp.json())
+    .then(resp => setDataPDF(resp))
+  }
+
     const columns=[
-      {title:'No.', field:'id', editable:false},
+      {title:'ID.', field:'id', editable:false},
       {title:'Division (Project)', field:'division_project', editable:false},
       {title:'Audit Project', field:'auditProject', lookup: titleOption},
       {title:'Client Name', field:'clientName'},
       {title:'Unit / Jabatan', field:'unitJabatan'},
-      {title:'TL', field:'TL'},
+      {title:'TL', field:'TL', editable:false},
       {title:'CSF Date', field:'CSFDate', type:'date'},
-      {title:'ATP 1', field:'atp1'},
-      {title:'ATP 2', field:'atp2'},
-      {title:'ATP 3', field:'atp3'},
-      {title:'ATP 4', field:'atp4'},
-      {title:'ATP 5', field:'atp5'},
-      {title:'ATP 6', field:'atp6'},
+      {title:'ATP 1', field:'atp1', type:'numeric'},
+      {title:'ATP 2', field:'atp2', type:'numeric'},
+      {title:'ATP 3', field:'atp3', type:'numeric'},
+      {title:'ATP 4', field:'atp4', type:'numeric'},
+      {title:'ATP 5', field:'atp5', type:'numeric'},
+      {title:'ATP 6', field:'atp6', type:'numeric'},
       {title:'ATP Overall', field:'atpOverall', editable:false},
-      {title:'AC 1', field:'ac1'},
-      {title:'AC 2', field:'ac2'},
-      {title:'AC 3', field:'ac3'},
-      {title:'AC 4', field:'ac4'},
-      {title:'AC 5', field:'ac5'},
-      {title:'AC 6', field:'ac6'},
+      {title:'AC 1', field:'ac1', type:'numeric'},
+      {title:'AC 2', field:'ac2', type:'numeric'},
+      {title:'AC 3', field:'ac3', type:'numeric'},
+      {title:'AC 4', field:'ac4', type:'numeric'},
+      {title:'AC 5', field:'ac5', type:'numeric'},
+      {title:'AC 6', field:'ac6', type:'numeric'},
       {title:'AC Overall', field:'acOverall', editable:false},
-      {title:'PAW 1', field:'paw1'},
-      {title:'PAW 2', field:'paw2'},
-      {title:'PAW 3', field:'paw3'},
+      {title:'PAW 1', field:'paw1', type:'numeric'},
+      {title:'PAW 2', field:'paw2', type:'numeric'},
+      {title:'PAW 3', field:'paw3', type:'numeric'},
       {title:'PAW Overall', field:'pawOverall', editable:false},
       {title:'Overall', field:'overall', editable:false},
-      {title:'Division (involevement)', field:'division_by_inv', lookup: {'division' : 'division', 'project' : 'project' }}
+      {title:'Division (involvement)', field:'division_by_inv', lookup: {'division' : 'division', 'project' : 'project' }}
   ]
+
+  const doc = new jsPDF({
+    orientation: 'l', 
+        unit: 'pt', 
+        format: [2000, 2000]
+  });
+
+  const onDownload = () => {
+
+
+    doc.autoTable({
+        head: [
+            [
+            'ID',
+            'Division (Project)',
+            'Audit Project',
+            'Client Name',
+            'Unit / Jabatan',
+            'TL',
+            'CSF Date',
+            'ATP 1',
+            'ATP 2',
+            'ATP 3',
+            'ATP 4',
+            'ATP 5',
+            'ATP 6',
+            'ATP Overall',
+            'AC 1',
+            'AC 2',
+            'AC 3',
+            'AC 4',
+            'AC 5',
+            'AC 6',
+            'AC Overall',
+            'PAW 1',
+            'PAW 2',
+            'PAW 3',
+            'PAW OVerall',
+            'Overall',
+            'division (involvement)'
+        ],
+        
+    ],
+        body: dataPDF
+      })
+
+    doc.save("CSF.pdf");
+}
 
     return (
         <div>
-          <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>Year</label>
-                <input type='number' placeholder='Year' 
-                value={year} onChange={(e) => setYear(e.target.value)}
-                />
-            </div> 
-
-            <input type='submit' value='Save' 
-            className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
-          </form>
+           
+          <button onClick={onDownload}>Download Database as PDF</button>
             <MaterialTable
                 title='CSF'
                 data={data}
@@ -197,8 +250,9 @@ const Editisle = () => {
                 options={{
                     filterRowStyle:true,
                     actionsColumnIndex:-1,
+pageSize: 15,
+pageSizeOptions: [5, 10, 20, 30 ,50, 75, 100 ],
                     addRowPosition:'first',
-                    exportButton:true,
                     filtering:true
                 }}
                 icons={tableIcons}

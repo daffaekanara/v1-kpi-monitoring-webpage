@@ -3,6 +3,10 @@ import About from '../components/profile/About';
 import DataChartTrainings from "../components/profile/DataChartTrainings";
 import HeaderTrainings from "../components/profile/HeaderTrainings";
 import EmployeeCertification from '../components/profile/EmployeeCertification';
+import ChangePassword from '../components/profile/ChangePassword';
+import UploadOtherCert from '../components/profile/UploadOtherCert';
+import YourCertificationDownload from '../components/profile/YourCertificationDownload';
+import DownloadCertNew from '../components/profile/DownloadCertNew';
 
 //user data
 import useToken from '../useToken';
@@ -18,7 +22,7 @@ const Profile = () => {
     return (
         <div>
             <span></span>
-              <h1 className='header' style={{fontWeight: 'bold'}}>
+              <h1 className='header-page' style={{fontWeight: 'bold'}}>
                 YOUR PROFILE
              </h1>
           <div className='container'>
@@ -27,6 +31,9 @@ const Profile = () => {
             <HeaderTrainings/>
             <DataChartTrainings/>
             <EmployeeCertification/>
+            <UploadOtherCert/>
+            <DownloadCertNew/>
+            <ChangePassword/>
         </div>
       </div>
     )

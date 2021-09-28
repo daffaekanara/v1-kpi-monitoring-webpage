@@ -3,6 +3,7 @@ import Header from './budget-data-components/Header'
 import EditIsle from './budget-data-components/EditIsle'
 import DownloadIsle from './budget-data-components/DownloadIsle'
 import UploadIsle from './budget-data-components/UploadIsle'
+import HistoryEditIsle from './budget-data-components/HistoryEditIsle'
 
 const EditBudgetData = () => {
 

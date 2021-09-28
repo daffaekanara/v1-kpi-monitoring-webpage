@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { Doughnut } from 'react-chartjs-2'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
+import { BrowserRouter, Switch, Route, Link} from "react-router-dom"
+import DetailsButton from '../../profile/About-components/DetailsButton'
 
 const Certification2 = () => {
 
@@ -39,7 +41,8 @@ const Certification2 = () => {
                   '#00AA8F',
                   '#517281',
                   '#7895a2',
-                  '#afc1cc'
+                  '#afc1cc',
+                  '#bca0dc'
             ]
           }
         ]
@@ -65,6 +68,9 @@ const Certification2 = () => {
         }}
         plugins={[ChartDataLabels]}
       />
+      <div className='header'>
+      <Link to='/Prof_cert_details'><DetailsButton/></Link>
+      </div>
     </div>
   )
 }

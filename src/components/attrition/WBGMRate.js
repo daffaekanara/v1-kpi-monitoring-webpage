@@ -9,12 +9,13 @@ const WBGM = () => {
   const [year, setYear] = useState(newDate.getFullYear())
 
   //API modification
-  const base_link = 'http://156.67.217.92/api/attrition/rate/WBGM'
+  const base_link = 'http://156.67.217.92/api/attrition/rate_wbgm_testing/year'
   const link = (base_link + '/' + year)
 
   const [chartData, setChartData] = useState({})
   const [yData, setYData] = useState([])
   const [xData, setXData] = useState([])
+  const [text_inside, setText_inside] = useState('')
 
   useEffect(() => {
     chart()
@@ -24,17 +25,15 @@ const WBGM = () => {
 
     let theYData1 = []
     let theXData = []
-    let textRate = []
 
-    //fetch data
     axios.get(link)
     .then(res => {
-      console.log(res)
-      for(const dataObj of res.data){
-        theYData1.push(dataObj.rate) //ambil data y
-        theXData.push(dataObj.title) //ambil data x
-      }
-      //PS: jangan lupa pake parseInt kalau datanya itu integer buat di atas
+      console.log(res.data[0])
+      setText_inside(res.data[0].text)
+      theYData1.push(res.data[0].rate)
+      theYData1.push(res.data[0].else_rate)
+      theXData.push(res.data[0].title_rate)
+      theXData.push(res.data[0].title_else)
 
       setChartData({
         labels: theXData,
@@ -53,82 +52,33 @@ const WBGM = () => {
     .catch(err => {
       console.log(err)
     })
-    console.log(theYData1, theXData)
-  }
-
-  //configure untuk text didalam doughnut chart, tapi masih ga ngerti cara ambil dari API nya
-  const plugins = [{
-    beforeDraw: function(chart) {
-     var width = chart.width,
-         height = chart.height,
-         ctx = chart.ctx;
-         ctx.restore();
-         var fontSize = (height / 160).toFixed(2);
-         ctx.font = fontSize + "em sans-serif";
-         ctx.textBaseline = "top";
-         var text = "",
-         textX = Math.round((width - ctx.measureText(text).width) / 2),
-         textY = height / 2;
-         ctx.fillText(text, textX, textY);
-         ctx.save();
-    } 
-  }]
-
-  //on submit form isi tahun
-  const onSubmit = (e) => {
-    e.preventDefault()
-
-    let theYData1 = []
-    let theXData = []
-    let textRate = []
-
-    //fetch data
-    axios.get(link)
-    .then(res => {
-      console.log(res)
-      for(const dataObj of res.data){
-        theYData1.push(dataObj.rate) //ambil data y
-        theXData.push(dataObj.title) //ambil data x
-      }
-      //PS: jangan lupa pake parseInt kalau datanya itu integer buat di atas
-
-      setChartData({
-        labels: theXData,
-        datasets:[
-          {
-            label:'attrition Rate',
-            data: theYData1,
-            backgroundColor:[
-              'rgba(255, 99, 132, 0.6)',
-              '#cbcbcb'
-            ]
-          }
-        ]
-      })
-    })
-
   }
 
   return (
     <div className='container'>
       <h1>WBGM</h1>
-      <form className='add-form' onSubmit={onSubmit}>
+      <form className='add-form'>
             <div className='form-control'>
                 <label>Year</label>
                 <input type='number' placeholder='Year' 
                 value={year} onChange={(e) => setYear(e.target.value)}
                 />
             </div> 
-
             <input type='submit' value='Save' 
             className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
           </form>
+          <h1 className='header'><b>{"Attrition Rate: " + text_inside + "%"}</b></h1>
       <Doughnut 
         data={chartData}
         options={{
-
+          plugins: {
+            datalabels: {
+              formatter: (value) => {
+                return value + '%';
+              }
+            }
+          }
         }}
-        plugins={plugins}
       />
     </div>
   )

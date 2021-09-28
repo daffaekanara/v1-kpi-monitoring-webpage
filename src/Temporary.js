@@ -1,92 +1,117 @@
-import { useState } from "react"
-import './App.css'
-import Navbar from "./components/navbar/Navbar"
-import NavbarUser from "./components/navbar/NavbarUser"
-import { Router } from "react-router-dom"
-import { BrowserRouter, Switch, Route } from "react-router-dom"
-import Home from "./pages/Home"
-import Profile from "./pages/Profile"
-import Attrition from "./pages/Attrition"
-import AuditPlanProgress from "./pages/AuditPlanProgress"
-import Budget from "./pages/Budget"
-import BUSU from "./pages/BUSU"
-import CSF from "./pages/CSF"
-import Help from "./pages/Help"
-import Training from "./pages/Training"
-import LoginForm from "./components/Login/LoginForm"
-import AdminPage from "./pages/AdminPage"
-import QAResults from "./pages/QAResults"
-import Contribute from "./pages/Contribute"
-import useToken from "./useToken"
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+import { jsPDF } from "jspdf";
+import { Button } from 'antd';
 
-const App = () => {
+const TestingDownloadPDF = () => {
 
-  const { token, setToken } = useToken();
+// Default export is a4 paper, portrait, using millimeters for units
+const doc = new jsPDF({
+    orientation: 'l', 
+        unit: 'pt', 
+        format: [2000, 4000]
+  });
 
-
-  if(!token) {
-    return <LoginForm setToken={setToken}/>
-  }
-
-  const Logout = () => {
-    setToken('')
-  }
   
+  const item = ['NIK: 888', '1', '2']
 
-  return (
-    <div className='App'>
-      {(token === 'User') ? (
-        <div>
-          <BrowserRouter>
-          <div className='website-header'>
-            <NavbarUser/>
-            <div className='btn-container'>
-              <button className='logout-btn' onClick={Logout}>Logout</button>
-            </div>
-          </div>
-            <Switch>
-              <Route path='/home' component={Home}/>
-              <Route path='/profile' component={Profile}/>
-              <Route path='/auditplanprogress' component={AuditPlanProgress}/>
-              <Route path='/BUSU' component={BUSU}/>
-              <Route path='/help' component={Help}/>
-              <Route path='/training' component={Training}/>
-              <Route path='/contribute' component={Contribute}/>
-            </Switch>
-          </BrowserRouter>
-        </div>
-      ) : (
-        <div>
-          <BrowserRouter>
-          <div className='website-header'>
-            <Navbar/>
-            <div className='btn-container'>
-              <button className='logout-btn' onClick={Logout}>Logout</button>
-            </div>
-          </div>
-            <Switch>
-              <Route path='/home' component={Home}/>
-              <Route path='/profile' component={Profile}/>
-              <Route path='/attrition' component={Attrition}/>
-              <Route path='/auditplanprogress' component={AuditPlanProgress}/>
-              <Route path='/budget' component={Budget}/>
-              <Route path='/BUSU' component={BUSU}/>
-              <Route path='/CSF' component={CSF}/>
-              <Route path='/help' component={Help}/>
-              <Route path='/training' component={Training}/>
-              <Route path='/adminpage' component={AdminPage}/>
-              <Route path='/qaresults' component={QAResults}/>
-              <Route path='/contribute' component={Contribute}/>
-            </Switch>
-          </BrowserRouter>
-        </div>
-      )}
-    </div>
-  )
+const onDownload = () => {
+
+
+    doc.autoTable({
+        head: [[
+            'ID',
+            'NIK',
+            'E-Mail',
+            'Role in Website',
+            'Staff Name',
+            'Division',
+            'Stream',
+            'Corporate Title',
+            'Corporate Grade',
+            'Date of Birth',
+            'Date Start First Employment',
+            'Date Join UOB',
+            'Date Join IA Function',
+            'As of Now',
+            'Age',
+            'Gen',
+            'Gender',
+            'Years of Audit Experience in UOB',
+            'Years of Audit Experience outside UOB',
+            'Total Audit Experience',
+            'Education Level',
+            'Educaiton Major',
+            'Education Category',
+            'RMG Certification',
+            'CISA Certification',
+            'CEH Certification',
+            'ISO27001 Certification',
+            'CHFI Certification',
+            'IDEA',
+            'Qualified Internal Auditor',
+            'CBIA Certification',
+            'CIA Certification',
+            'CPA Certification',
+            'CA Certification',
+            'Other Certification',
+            'Internal Audit Background',
+            'External Audit Background',
+            'Still in IA'
+        ]],
+        body: [
+          [
+              '1',
+              '1432476863',
+              'Ricky@gmail.com',
+              'user',
+              'Daffa Aulia Ekanara',
+              'PPA',
+              'IT',
+              'Internship',
+              '1',
+              '02/06/1998',
+              '28/07/2021',
+              '28/07/2021',
+              '28/07/2021',
+              '28/09/2021',
+              '23',
+              'Gen Z',
+              'Male',
+              '0',
+              '0',
+              '0',
+              'Bachelor',
+              'IT',
+              'IT',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+              '0',
+            ],
+          // ...
+        ],
+      })
+
+    doc.save("a4.pdf");
 }
 
-export default App;
+    return (
+        <div>
+            <button onClick={onDownload}>Download PDF</button>
+        </div>
+    )
+}
 
-
-
-
+export default TestingDownloadPDF

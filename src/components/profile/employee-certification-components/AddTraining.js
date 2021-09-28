@@ -27,6 +27,7 @@ const AddTraining = ({ onAdd }) => {
     const [CA_cert, setCA_cert] = useState('')
     const [CBIA_cert, setCBIA_cert] = useState('')
     const [CPA_cert, setCPA_cert] = useState('')
+    const [Other_cert, setOther_cert] = useState('')
 
     const [loadingSMR_1, setLoadingSMR_1] = useState(false)
     const [uploadedSMR_1, setUploadedSMR_1] = useState(false)
@@ -70,6 +71,9 @@ const AddTraining = ({ onAdd }) => {
     
     const [loadingCPA, setLoadingCPA] = useState(false)
     const [uploadedCPA, setUploadedCPA] = useState(false)
+
+    const [loadingOther, setLoadingOther] = useState(false)
+    const [uploadedOther, setUploadedOther] = useState(false)
     
 
     const uploadSMR_1 = async e => {
@@ -350,6 +354,26 @@ const uploadSMR_5 = async e => {
             setCPA_cert(file.secure_url)
             setLoadingCPA(false)
             setUploadedCPA(true)
+    }
+
+    const uploadOther = async e => {
+        const files = e.target.files[0]
+            const data = new FormData()
+            data.append('cert_file', files)
+            setLoadingOther(true)
+            setUploadedOther(false)
+            const res = await fetch(
+                'http://156.67.217.92/api/admin/employee_data/cert/Other/' + decode.nik,
+                {
+                    method: 'POST',
+                    body: data
+                }
+            )
+            const file = await res.json()
+
+            setOther_cert(file.secure_url)
+            setLoadingOther(false)
+            setUploadedOther(true)
     }
 
     return (

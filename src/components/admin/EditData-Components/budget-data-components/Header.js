@@ -16,14 +16,7 @@ const Header = ({ title, onEditClick, onDownloadClick, onUploadClick }) => {
             <span></span>
             <span></span>
             <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+
             <Button color='#777777' text='Edit' onClick={onEditClick}/>
             <Button color='#3cb065' text='Upload MRPT' onClick={onUploadClick}/>
         </header>

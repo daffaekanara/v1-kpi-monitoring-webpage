@@ -49,6 +49,7 @@ const Editisle = () => {
     const url = 'http://156.67.217.92/api/admin/csf_data/table_data'
     const url_title = 'http://156.67.217.92/api/utils/title_project'
     const base_url_pdf = 'http://156.67.217.92/api/utils/csf/show_aas/year/'
+    const url_division = 'http://156.67.217.92/api/utils/divs'
 
     //date data
     const newDate = new Date()
@@ -60,6 +61,8 @@ const Editisle = () => {
     const [dataTitles, setDataTitles] = useState([])
     const [dataPDF, setDataPDF] = useState()
     const [url_pdf, seturl_pdf] = useState(base_url_pdf + year)
+
+    const [dataDivision, setDataDivision] = useState([])
 
 
     //fetch DB
@@ -87,11 +90,46 @@ const Editisle = () => {
       titleOption[ id ] = project_title
     })
 
+    //fetch DB divisions name
+    useEffect(() => {getDataDivision()}, [])
+
+    const getDataDivision = () => {
+      fetch(url_division)
+      .then(resp => resp.json())
+      .then(resp => setDataDivision(resp))
+    }
+
+    //make the look up division option
+    const divisionOption = {}
+    dataDivision.map(title => {
+      const { id, division } = title
+      divisionOption[ division ] = division
+    })
+
     const onSubmit = (e) => {
       e.preventDefault()
         fetch(url + year)
         .then(resp => resp.json())
         .then(resp => setData(resp))
+
+        fetch(url_division)
+        .then(resp => resp.json())
+        .then(resp => setDataDivision(resp))
+  
+        dataDivision.map(title => {
+          const { id, division } = title
+          divisionOption[ id ] = division
+        })
+
+        fetch(url_title + '/' + year)
+      .then(resp => resp.json())
+      .then(resp => setDataTitles(resp))
+      
+      const titleOption = {}
+    dataTitles.map(title => {
+      const { id, project_title } = title
+      titleOption[ id ] = project_title
+    })
   }
 
   //fetch DB download PDF
@@ -130,7 +168,7 @@ const Editisle = () => {
       {title:'PAW 3', field:'paw3', type:'numeric'},
       {title:'PAW Overall', field:'pawOverall', editable:false},
       {title:'Overall', field:'overall', editable:false},
-      {title:'Division (involvement)', field:'division_by_inv', lookup: {'division' : 'division', 'project' : 'project' }}
+      {title:'Division (involvement)', field:'division_by_inv', lookup: divisionOption}
   ]
 
   const doc = new jsPDF({

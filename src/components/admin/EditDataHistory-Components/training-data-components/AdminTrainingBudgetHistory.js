@@ -48,14 +48,10 @@ const AdminTrainingBudgetHistory = () => {
     const columns=[
       {title:'ID.', field:'id', editable:false},
       {title:'Division', field:'division', editable:false},
-      {title:'Number of hours', field:'numberOfHours', type:'numeric', editable:false},
-      {title:'Budget', field:'budget', type:'numeric'},
-      {title:'Cost Realization', field:'costRealization', type:'numeric', editable:false},
-      {title:'Charged By Finance', field:'chargedByFinance', type:'numeric', editable:false},
-      {title:'Remarks', field:'remark'}
+      {title:'Budget', field:'budget', type:'numeric'}
   ]
 
-    const url = 'http://156.67.217.92/api/admin/training_data/table_data'
+    const url = 'http://156.67.217.92/api/historic/training/budget/year'
 
     //date data
     const newDate = new Date()
@@ -85,6 +81,18 @@ const AdminTrainingBudgetHistory = () => {
 
     return (
         <div>
+
+          <form className='add-form' onSubmit={onSubmit}>
+            <div className='form-control'>
+                <label>Year</label>
+                <input type='number' placeholder='Year' 
+                value={year} onChange={(e) => setYear(e.target.value)}
+                />
+            </div> 
+
+            <input type='submit' value='Save' 
+            className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
+          </form>
            
             <MaterialTable
                 title='Budget Training'

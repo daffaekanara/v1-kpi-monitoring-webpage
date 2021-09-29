@@ -50,6 +50,8 @@ const onSubmit = (e) => {
   child_division: child_division
     }).catch(err => {
         console.log(err)
+        alert('backend error')
+        return
       });
 
     setmother_division('')

@@ -50,7 +50,7 @@ const HistoryEditIsle = () => {
     const newDate = new Date()
     const date = newDate.getDate()
     const [month, setMonth] = useState(newDate.getMonth())
-    const [year, setYear] = useState(newDate.getFullYear())
+    const [year, setYear] = useState(newDate.getFullYear() - 1)
     
     const [data, setData] = useState([])
 

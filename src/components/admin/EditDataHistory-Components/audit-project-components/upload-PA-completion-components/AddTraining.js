@@ -15,7 +15,7 @@ const AddTraining = ({ onAdd }) => {
   const [year, setYear] = useState(newDate.getFullYear())
 
   //API modification
-  const base_link = 'http://156.67.217.92/api/project/submit_pa_form'
+  const base_link = 'http://103.200.4.18:8181/api/project/submit_pa_form'
   const [link, setLink] = useState(base_link + '/' + year)
 
 const onSubmit = (e) => {

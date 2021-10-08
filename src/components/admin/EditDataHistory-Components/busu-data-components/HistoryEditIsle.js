@@ -45,8 +45,8 @@ const tableIcons = {
 
 const HistoryEditIsle = () => {
 
-    const url = 'http://156.67.217.92/api/historic/busu/year'
-    const url_division = 'http://156.67.217.92/api/utils/divs'
+    const url = 'http://103.200.4.18:8181/api/historic/busu/year'
+    const url_division = 'http://103.200.4.18:8181/api/utils/divs'
 
     //date data
     const newDate = new Date()
@@ -105,9 +105,9 @@ const HistoryEditIsle = () => {
       {title:'Workshop / Regular Meeting', field:'WorRM'},
       {title:'Activity', field:'activity'},
       {title:'Date', field:'date'},
-      {title:'Download Proof', field:'download_proof',
+      {title:'Download Proof', field:'download_proof', editable:false,
       render:rowData=>
-      <Link href={"http://156.67.217.92/api/admin/busu_data/download/proof/id/" + rowData.id}>
+      <Link href={"http://103.200.4.18:8181/api/admin/busu_data/download/proof/id/" + rowData.id}>
         {<p>download</p>}
       </Link>}
   ]

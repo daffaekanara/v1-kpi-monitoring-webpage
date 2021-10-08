@@ -49,7 +49,7 @@ const tableIcons = {
 
 const InputBUSU = () => {
 
-    const url = 'http://156.67.217.92/api/engagement/input_table'
+    const url = 'http://103.200.4.18:8181/api/engagement/input_table'
 
     //user data
   const { token, setToken } = useToken()
@@ -86,9 +86,9 @@ const InputBUSU = () => {
       {title:'Workshop / Regular Meeting', field:'WorRM', lookup: { 'Regular Meeting': 'Regular Meeting', 'Workshop': 'Workshop' }},
       {title:'Activity', field:'activity'},
       {title:'Date', field:'date', type:'date'},
-      {title:'Download Proof', field:'download_proof',
+      {title:'Download Proof', field:'download_proof', editable:false,
       render:rowData=>
-      <Link href={"http://156.67.217.92/api/admin/busu_data/download/proof/id/" + rowData.id}>
+      <Link href={"http://103.200.4.18:8181/api/admin/busu_data/download/proof/id/" + rowData.id}>
         {<p>download</p>}
       </Link>}
   ]
@@ -96,17 +96,6 @@ const InputBUSU = () => {
     return (
         <div className='container'>
             <h1>Edit Your BU/SU Engagement</h1>
-          <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>Year</label>
-                <input type='number' placeholder='Year' 
-                value={year} onChange={(e) => setYear(e.target.value)}
-                />
-            </div> 
-
-            <input type='submit' value='Save' 
-            className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
-          </form>
             <MaterialTable
                 title='BU/SU Engagement'
                 data={data}

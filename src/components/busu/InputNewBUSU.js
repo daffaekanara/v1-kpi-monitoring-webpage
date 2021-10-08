@@ -25,7 +25,7 @@ const InputNewBUSU = () => {
   
   //fetch Trainings
   const fetchTrainings = async () => {
-    const res = await fetch('http://156.67.217.92/api/engagement/input_form')
+    const res = await fetch('http://103.200.4.18:8181/api/engagement/input_form')
     const data = await res.json() //res.json cuma buat fake rest API BE
   
     console.log(data)
@@ -34,7 +34,7 @@ const InputNewBUSU = () => {
   
   //add training
   const addTraining = async (training) => {
-    const res = await fetch('http://156.67.217.92/api/engagement/input_form', {
+    const res = await fetch('http://103.200.4.18:8181/api/engagement/input_form', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -53,7 +53,7 @@ const InputNewBUSU = () => {
    
   //download old certificate (masih belom bener soalnya blom ada data certificate nya)
   const downloadData = async (id) => {
-    await fetch('http://156.67.217.92/api/training/form/${id}',{
+    await fetch('http://103.200.4.18:8181/api/training/form/${id}',{
       method: 'GET'
     })
   }

@@ -32,7 +32,7 @@ const InputQA = () => {
   
   //add training
   const addTraining = async (training) => {
-    const res = await fetch('http://156.67.217.92/api/admin/qaip_data/form', {
+    const res = await fetch('http://103.200.4.18:8181/api/admin/qaip_data/form', {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json'

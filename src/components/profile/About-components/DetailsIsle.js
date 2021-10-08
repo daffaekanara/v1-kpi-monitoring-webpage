@@ -53,7 +53,7 @@ const DetailsIsle = () => {
   const jwt = require('jsonwebtoken')
   const decode = jwt.decode(token)
 
-    const base_url = 'http://156.67.217.92/api/profile/about/table_data/'
+    const base_url = 'http://103.200.4.18:8181/api/profile/about/table_data/'
 
     const url = base_url + decode.nik
 
@@ -121,49 +121,7 @@ const DetailsIsle = () => {
                 data={data}
                 columns={columns}
                 editable={{
-                  onRowAdd: (newData) => new Promise((resolve, reject) => {
-                    //Backend call
-                    fetch(url, {
-                      method: "POST",
-                      headers: {
-                        'Content-type': "application/json"
-                      },
-                      body: JSON.stringify(newData)
-                    }).then(resp => resp.json())
-                      .then(resp => {
-                        getData()
-                        resolve()
-                      })
-                  }),
                   onRowUpdate: (newData, oldData) => new Promise((resolve, reject) => {
-                    //Backend call
-                    fetch(url + "/" + oldData.id, {
-                      method: "PATCH",
-                      headers: {
-                        'Content-type': "application/json"
-                      },
-                      body: JSON.stringify(newData)
-                    }).then(resp => resp.json())
-                      .then(resp => {
-                        getData()
-                        resolve()
-                      })
-                  }),
-                  onRowDelete: (oldData) => new Promise((resolve, reject) => {
-                    //Backend call
-                    fetch(url + "/" + oldData.id, {
-                      method: "DELETE",
-                      headers: {
-                        'Content-type': "application/json"
-                      },
-        
-                    }).then(resp => resp.json())
-                      .then(resp => {
-                        getData()
-                        resolve()
-                      })
-                  }),
-                  onBulkUpdate: (newData, oldData) => new Promise((resolve, reject) => {
                     //Backend call
                     fetch(url + "/" + oldData.id, {
                       method: "PATCH",

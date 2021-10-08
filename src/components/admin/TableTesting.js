@@ -46,8 +46,8 @@ const tableIcons = {
 
 const Editisle = () => {
 
-    const url = 'http://156.67.217.92/admin/attrition_data/api/table_data/2021'
-    const url2 = 'http://156.67.217.92/admin/attrition_data/api/table_data'
+    const url = 'http://103.200.4.18:8181/admin/attrition_data/api/table_data/2021'
+    const url2 = 'http://103.200.4.18:8181/admin/attrition_data/api/table_data'
     const [data, setData] = useState([])
 
     //fetch DB

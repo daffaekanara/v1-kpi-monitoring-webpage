@@ -10,8 +10,8 @@ const AuditProjects = () => {
   const [year, setYear] = useState(newDate.getFullYear())
 
   //API modification
-  const base_link = 'http://156.67.217.92/api/projects/total_by_division'
-  const div_link = 'http://156.67.217.92/api/utils/divs'
+  const base_link = 'http://103.200.4.18:8181/api/projects/total_by_division'
+  const div_link = 'http://103.200.4.18:8181/api/utils/divs'
   const link = (base_link + '/' + year)
 
   const [chartData, setChartData] = useState({})

@@ -44,7 +44,7 @@ const tableIcons = {
 
 const Editisle = () => {
 
-    const url = 'http://156.67.217.92/api/admin/budget_data/table_data'
+    const url = 'http://103.200.4.18:8181/api/admin/budget_data/table_data'
     
     //date data
     const newDate = new Date()

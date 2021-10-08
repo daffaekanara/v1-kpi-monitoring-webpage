@@ -48,7 +48,7 @@ const tableIcons = {
 
 const ViewBUSU = () => {
 
-    const url = 'http://156.67.217.92/api/engagement/user_div_table'
+    const url = 'http://103.200.4.18:8181/api/engagement/user_div_table'
 
     //user data
   const { token, setToken } = useToken()

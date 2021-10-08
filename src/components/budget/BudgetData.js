@@ -17,7 +17,7 @@ const BudgetData = () => {
   const [xData, setXData] = useState([])
 
   //API modification
-  const base_link = 'http://156.67.217.92/api/budget/budgetdata'
+  const base_link = 'http://103.200.4.18:8181/api/budget/budgetdata'
   const link = (base_link + '/' + year + '/' + month)
 
   useEffect(() => {

@@ -9,7 +9,7 @@ const AddTraining = ({ onAdd }) => {
     const [this_year, setThis_year] = useState(newDate.getFullYear())
 
     //project title
-    const url_title = 'http://156.67.217.92/api/utils/title_project_v2/year/' + this_year
+    const url_title = 'http://103.200.4.18:8181/api/utils/title_project_v2/year/' + this_year
 
     const [projectTitle, setProjectTitle] = useState('')
     const [datatitle, setDatatitle] = useState('')

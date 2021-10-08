@@ -44,8 +44,8 @@ const tableIcons = {
 
 const DetailsTableHistory = () => {
 
-    const url = 'http://156.67.217.92/api/admin/attrition/rot_table'
-    const url_division = 'http://156.67.217.92/api/utils/divs'
+    const url = 'http://103.200.4.18:8181/api/admin/attrition/rot_table'
+    const url_division = 'http://103.200.4.18:8181/api/utils/divs'
     
     //date data
     const newDate = new Date()

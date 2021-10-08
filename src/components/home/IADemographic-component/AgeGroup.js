@@ -18,7 +18,7 @@ const AgeGroup = () => {
     let theXData = []
 
     //fetch data
-    axios.get('http://156.67.217.92/api/dashboard/age_group/')
+    axios.get('http://103.200.4.18:8181/api/dashboard/age_group/')
     .then(res => {
       console.log(res)
       for(const dataObj of res.data){

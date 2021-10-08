@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import jwt from 'jwt-decode'
 
 async function loginUser(credentials) {
-    return fetch('http://156.67.217.92/auth/v1', {
+    return fetch('http://103.200.4.18:8181/auth/v1', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

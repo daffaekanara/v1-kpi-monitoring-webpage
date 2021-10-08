@@ -46,9 +46,9 @@ const tableIcons = {
 
 const Editisle = () => {
 
-    const url = 'http://156.67.217.92/api/admin/employee_data/table_data'
-    const url_division = 'http://156.67.217.92/api/utils/divs'
-    const url_pdf = 'http://156.67.217.92/api/utils/employee/show_aas'
+    const url = 'http://103.200.4.18:8181/api/admin/employee_data/table_data'
+    const url_division = 'http://103.200.4.18:8181/api/utils/divs'
+    const url_pdf = 'http://103.200.4.18:8181/api/utils/employee/show_aas'
 
     //date data
     const newDate = new Date()

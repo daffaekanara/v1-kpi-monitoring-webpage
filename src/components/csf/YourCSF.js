@@ -9,7 +9,7 @@ const YourCSF = () => {
   const newDate = new Date()
   const [year, setYear] = useState(newDate.getFullYear())
 
-  const link = ('http://156.67.217.92/api/csf/overall_csf/' + year)
+  const link = ('http://103.200.4.18:8181/api/csf/overall_csf/' + year)
 
   const [chartData, setChartData] = useState({})
   const [yData, setYData] = useState([])

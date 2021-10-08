@@ -44,8 +44,8 @@ const tableIcons = {
 
 const QATable = () => {
 
-    const url = 'http://156.67.217.92/api/admin/qaip_data/table_data'
-    const url_title = 'http://156.67.217.92/api/utils/title_project'
+    const url = 'http://103.200.4.18:8181/api/qaresults/qa_data'
+    const url_title = 'http://103.200.4.18:8181/api/utils/title_project'
 
     //date data
     const newDate = new Date()

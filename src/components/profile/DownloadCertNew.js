@@ -49,7 +49,7 @@ const tableIcons = {
 
 const DownloadCertNew = () => {
 
-    const url = 'http://156.67.217.92/api/admin/employee/tables/cert/nik'
+    const url = 'http://103.200.4.18:8181/api/admin/employee/tables/cert/nik'
     
 
     //user data
@@ -57,7 +57,7 @@ const DownloadCertNew = () => {
   const jwt = require('jsonwebtoken')
   const decode = jwt.decode(token)
 
-  const [download_link, setDownload_link] = useState('http://156.67.217.92/api/profile/get_cert_proof/id/')
+  const [download_link, setDownload_link] = useState('http://103.200.4.18:8181/api/profile/get_cert_proof/id/')
   const [data, setData] = useState([])
     //fetch DB
     useEffect(() => {getData()}, [])
@@ -72,7 +72,7 @@ const DownloadCertNew = () => {
       {title:'ID.', field:'id', editable:false},
       {title: 'Employee Name', field:'employee_name', editable:false},
       {title:'Certificate Name', field:'certifcate_name', editable:false},
-      {title:'Download Certificate', field:'download_proof',
+      {title:'Download Certificate', field:'download_proof', editable:false,
       render:rowData=>
       <Link href={download_link + rowData.id}>
         {<p>download</p>}
@@ -89,7 +89,7 @@ const DownloadCertNew = () => {
                 editable={{
                     onRowDelete: (oldData) => new Promise((resolve, reject) => {
                         //Backend call
-                        fetch('http://156.67.217.92/api/admin/employee/tables/cert/id/' + oldData.id, {
+                        fetch('http://103.200.4.18:8181/api/admin/employee/tables/cert/id/' + oldData.id, {
                           method: "DELETE",
                           headers: {
                             'Content-type': "application/json"

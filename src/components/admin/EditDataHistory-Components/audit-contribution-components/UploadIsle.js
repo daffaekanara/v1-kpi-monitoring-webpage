@@ -17,7 +17,7 @@ const UploadIsle = () => {
 		formData.append('File', selectedFile);
 
 		fetch(
-			'http://156.67.217.92/api/admin/budget_data/mrpt_file',
+			'http://103.200.4.18:8181/api/admin/budget_data/mrpt_file',
 			{
 				method: 'POST',
 				body: formData,

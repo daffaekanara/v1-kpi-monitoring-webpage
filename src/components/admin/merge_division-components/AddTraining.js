@@ -11,7 +11,7 @@ const AddTraining = ({ onAdd }) => {
     const [text, setText] = useState('')
 
     //project title
-  const url_title = 'http://156.67.217.92/api/utils/divs_v2'
+  const url_title = 'http://103.200.4.18:8181/api/utils/divs_v2'
 
   const [datatitle, setDatatitle] = useState('')
   const [QAType, setQAType] = useState('')
@@ -45,7 +45,7 @@ const onSubmit = (e) => {
   formData.append("mother_division", mother_division);
   formData.append("child_division", child_division);
 
-  axios.post('http://156.67.217.92/api/admin/operation/merge-division', {
+  axios.post('http://103.200.4.18:8181/api/admin/operation/merge-division', {
   mother_division: mother_division,
   child_division: child_division
     }).catch(err => {

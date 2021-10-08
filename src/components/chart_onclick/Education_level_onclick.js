@@ -44,7 +44,7 @@ const tableIcons = {
 };
 
 const Education_level_onclick = () => {
-    const url = 'http://156.67.217.92/api/clicktable/emp/edu_lvl'
+    const url = 'http://103.200.4.18:8181/api/clicktable/emp/edu_lvl'
 
     //date data
     const newDate = new Date()

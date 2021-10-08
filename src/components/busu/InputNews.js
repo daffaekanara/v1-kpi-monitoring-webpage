@@ -52,7 +52,7 @@ const { token, setToken } = useToken()
 const jwt = require('jsonwebtoken')
 const decode = jwt.decode(token)
 
-    const url = 'http://156.67.217.92/api/auditcontrib/audit_contribution_data/table_data'
+    const url = 'http://103.200.4.18:8181/api/auditcontrib/audit_contribution_data/table_data'
 
     //date data
     const newDate = new Date()
@@ -88,17 +88,6 @@ const decode = jwt.decode(token)
     return (
         <div className='container'>
             <h1>Input/Edit Audit News</h1>
-          <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>Year</label>
-                <input type='number' placeholder='Year' 
-                value={year} onChange={(e) => setYear(e.target.value)}
-                />
-            </div> 
-
-            <input type='submit' value='Save' 
-            className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
-          </form>
             <MaterialTable
             title='Audit News'
                 data={data}

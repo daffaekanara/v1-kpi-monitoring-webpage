@@ -45,7 +45,7 @@ const tableIcons = {
 
 const HistoryEditIsle = () => {
 
-    const url = 'http://156.67.217.92/api/admin/audit_project_data/table_data'
+    const url = 'http://103.200.4.18:8181/api/admin/audit_project_data/table_data'
 
     //date data
     const newDate = new Date()
@@ -86,9 +86,9 @@ const HistoryEditIsle = () => {
       {title:'Is Carried Over', field:'is_carried_over', lookup: { 'true': 'true', 'false': 'false' }},
       {title:'Timely Report', field:'timely_report', lookup: { 'true': 'true', 'false': 'false' }},
       {title:'PA Completion', field:'completion_PA', editable:false},
-      {title:'Download PA Completion', field:'download_proof',
+      {title:'Download PA Completion', field:'download_proof', editable:false,
       render:rowData=>
-      <Link href={"http://156.67.217.92/api/admin/audit_project_data/download/pa/id/" + rowData.id}>
+      <Link href={"http://103.200.4.18:8181/api/admin/audit_project_data/download/pa/id/" + rowData.id}>
         {<p>download</p>}
       </Link>}
   ]

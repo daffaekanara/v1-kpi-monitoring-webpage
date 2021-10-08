@@ -28,7 +28,7 @@ const onSubmit = (e) => {
   formData.append("proof", proof);
   formData.append("nik", id);
 
-  axios.post('http://156.67.217.92/api/training/form-file', formData)
+  axios.post('http://103.200.4.18:8181/api/training/form-file', formData)
     .then((res) => console.log(res))
     .catch((err) => alert("File Upload Error"));
 

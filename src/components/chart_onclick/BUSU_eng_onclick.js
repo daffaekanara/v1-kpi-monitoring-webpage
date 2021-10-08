@@ -44,8 +44,8 @@ const tableIcons = {
 };
 
 const BUSU_eng_onclick = () => {
-    const url = 'http://156.67.217.92/api/admin/busu_data/table_data'
-    const url_division = 'http://156.67.217.92/api/utils/divs'
+    const url = 'http://103.200.4.18:8181/api/admin/busu_data/table_data'
+    const url_division = 'http://103.200.4.18:8181/api/utils/divs'
 
     //date data
     const newDate = new Date()

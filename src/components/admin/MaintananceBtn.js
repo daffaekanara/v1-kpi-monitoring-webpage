@@ -8,7 +8,7 @@ const MaintananceBtn = () => {
     const [maintananceMode,setMaintananceMode] = useState()
 
     useEffect(() => {
-        axios.get('http://156.67.217.92/api/admin/maintenance')
+        axios.get('http://103.200.4.18:8181/api/admin/maintenance')
         .then(res => {
             setMaintananceMode(res.data.is_maintenance_mode)
             console.log(res.data.is_maintenance_mode)
@@ -28,13 +28,13 @@ const MaintananceBtn = () => {
         const data = new FormData()
         data.append('is_maintenance_mode', e.currentTarget.checked)
         const res = fetch(
-            'http://156.67.217.92/api/admin/maintenance',
+            'http://103.200.4.18:8181/api/admin/maintenance',
             {
                 method: 'POST',
                 body: data
             }
         )
-        axios.get('http://156.67.217.92/api/admin/maintenance')
+        axios.get('http://103.200.4.18:8181/api/admin/maintenance')
         .then(res => {
             setMaintananceMode(res.data.is_maintenance_mode)
             console.log(res.data.is_maintenance_mode)

@@ -19,7 +19,7 @@ const HeaderTrainings = () => {
     const year = newDate.getFullYear()
 
     //API modification
-    const base_link = 'http://156.67.217.92/api/profile/header_training'
+    const base_link = 'http://103.200.4.18:8181/api/profile/header_training'
     const link = (base_link + '/' + decode.nik + '/' + year)
 
   useEffect(() => {

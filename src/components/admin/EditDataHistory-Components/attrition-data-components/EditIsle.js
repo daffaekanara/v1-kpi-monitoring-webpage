@@ -44,7 +44,7 @@ const tableIcons = {
 
 const Editisle = () => {
 
-    const url = 'http://156.67.217.92/api/admin/attrition/summary_table/year'
+    const url = 'http://103.200.4.18:8181/api/admin/attrition/summary_table/year'
 
     //date data
     const newDate = new Date()

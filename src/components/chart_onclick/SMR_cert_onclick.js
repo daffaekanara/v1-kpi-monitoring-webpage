@@ -44,7 +44,7 @@ const tableIcons = {
 };
 
 const SMR_cert_onclick = () => {
-    const url = 'http://156.67.217.92/api/clicktable/cert/smr'
+    const url = 'http://103.200.4.18:8181/api/clicktable/cert/smr'
 
     //date data
     const newDate = new Date()

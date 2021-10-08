@@ -61,14 +61,14 @@ const YourTrainingTable = () => {
       {title:'Date', field:'date', type:'date'},
       {title:'Number of hours', field:'numberOfHours', type:'numeric'},
       {title:'Remarks', field:'remark'},
-      {title:'Download Proof', field:'download_proof',
+      {title:'Download Proof', field:'download_proof', editable:false,
       render:rowData=>
-      <Link href={"http://156.67.217.92/api/admin/training_data/download/proof/id/" + rowData.id}>
+      <Link href={"http://103.200.4.18:8181/api/admin/training_data/download/proof/id/" + rowData.id}>
         {<p>download</p>}
       </Link>}
   ]
 
-    const url = 'http://156.67.217.92/api/training/table'
+    const url = 'http://103.200.4.18:8181/api/training/table'
 
     //date data
     const newDate = new Date()

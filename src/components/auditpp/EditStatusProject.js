@@ -49,7 +49,7 @@ const tableIcons = {
 
 const EditStatusProject = () => {
 
-    const url = 'http://156.67.217.92/api/projects/edit_project_table'
+    const url = 'http://103.200.4.18:8181/api/projects/edit_project_table'
 
     //user data
   const { token, setToken } = useToken()
@@ -86,16 +86,16 @@ const EditStatusProject = () => {
     const columns=[
       {title:'ID.', field:'id', editable:false},
       {title: auditPlanThisYear, field:'auditPlan', editable:false},
-      {title:'Audit Division', field:'division'},
+      {title:'Audit Division', field:'division', editable:false},
       {title:'Status', field:'status', lookup: { 'Not Started': 'Not Started', 'Planning': 'Planning', 'Fieldwork': 'Fieldwork', 'Reporting':'Reporting','Sign-off':'Sign-off', 'Completed':'Completed' }},
       {title:'Use of DA', field:'useOfDA', lookup: { 'true': 'true', 'false': 'false' }},
       {title:'Year', field:'year', type:'numeric', editable:false},
       {title:'Is Carried Over', field:'is_carried_over', lookup: { 'true': 'true', 'false': 'false' }},
       {title:'Timely Report', field:'timely_report', lookup: { 'true': 'true', 'false': 'false' }},
       {title:'PA Completion', field:'completion_PA', editable:false},
-      {title:'Download PA Completion', field:'download_proof',
+      {title:'Download PA Completion', field:'download_proof', editable:false,
       render:rowData=>
-      <Link href={"http://156.67.217.92/api/admin/audit_project_data/download/pa/id/" + rowData.id}>
+      <Link href={"http://103.200.4.18:8181/api/admin/audit_project_data/download/pa/id/" + rowData.id}>
         {<p>download</p>}
       </Link>}
   ]
@@ -103,17 +103,6 @@ const EditStatusProject = () => {
     return (
         <div className='container'>
           <h1>Edit Status Project (Lead Reviewer)</h1>
-          <form className='add-form' onSubmit={onSubmit}>
-            <div className='form-control'>
-                <label>Year</label>
-                <input type='number' placeholder='Year' 
-                value={year} onChange={(e) => setYear(e.target.value)}
-                />
-            </div> 
-
-            <input type='submit' value='Save' 
-            className='btn btn-block' style={{backgroundColor: "#5F887D"}} />
-          </form>
             <MaterialTable
             title='Audit Projects'
                 data={data}

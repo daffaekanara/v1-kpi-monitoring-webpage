@@ -44,8 +44,8 @@ const tableIcons = {
 };
 
 const CSF_onclick = () => {
-    const url = 'http://156.67.217.92/api/admin/csf_data/table_data'
-    const url_title = 'http://156.67.217.92/api/utils/title_project'
+    const url = 'http://103.200.4.18:8181/api/admin/csf_data/table_data'
+    const url_title = 'http://103.200.4.18:8181/api/utils/title_project'
 
     //date data
     const newDate = new Date()

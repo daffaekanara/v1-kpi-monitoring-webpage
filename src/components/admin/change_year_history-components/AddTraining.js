@@ -25,7 +25,7 @@ const onSubmit = (e) => {
     const formData = new FormData();
   formData.append("year", year);
 
-  axios.post('http://156.67.217.92/api/admin/operation/migrate_data', {
+  axios.post('http://103.200.4.18:8181/api/admin/operation/migrate_data', {
   year: year
 })
     .then((res) => console.log(res))

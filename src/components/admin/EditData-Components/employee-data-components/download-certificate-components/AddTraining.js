@@ -78,7 +78,7 @@ const AddTraining = ({ onAdd }) => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_1/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_1/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -99,7 +99,7 @@ const AddTraining = ({ onAdd }) => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_2/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_2/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -120,7 +120,7 @@ const uploadSMR_3 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_3/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_3/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -141,7 +141,7 @@ const uploadSMR_4 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_4/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_4/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -162,7 +162,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_5/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_5/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -185,7 +185,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CISA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CISA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -209,7 +209,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CEH/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CEH/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -230,7 +230,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/ISO27001/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/ISO27001/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -251,7 +251,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CHFI/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CHFI/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -272,7 +272,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/QIA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/QIA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -293,7 +293,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CIA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CIA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -314,7 +314,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -335,7 +335,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CBIA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CBIA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -356,7 +356,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CPA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CPA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -381,7 +381,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_1/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_1/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -402,7 +402,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_2/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_2/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -423,7 +423,7 @@ const uploadSMR_3 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_3/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_3/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -444,7 +444,7 @@ const uploadSMR_4 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_4/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_4/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -465,7 +465,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/SMR_5/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/SMR_5/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -486,7 +486,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CISA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CISA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -507,7 +507,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CEH/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CEH/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -528,7 +528,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/ISO27001/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/ISO27001/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -549,7 +549,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CHFI/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CHFI/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -570,7 +570,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/QIA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/QIA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -591,7 +591,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CIA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CIA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -612,7 +612,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -633,7 +633,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CBIA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CBIA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -654,7 +654,7 @@ const uploadSMR_5 = async e => {
         })
           .then(response => {
             response.arrayBuffer().then(function(buffer) {
-              const url = 'http://156.67.217.92/api/admin/employee/download/cert/cname/CPA/nik/' + NIK
+              const url = 'http://103.200.4.18:8181/api/admin/employee/download/cert/cname/CPA/nik/' + NIK
               const link = document.createElement("a");
               link.href = url;
               link.setAttribute("download", "image.png"); //or any other extension
@@ -705,7 +705,7 @@ const uploadSMR_5 = async e => {
             {uploadedCEH && <div className="upload-alert-container"><h3><b>CEH File Downloaded.</b></h3></div>}
 
             <div className='form-control'>
-                <label>ISO2700127001</label>
+                <label>ISO27001</label>
                 <button onClick={uploadISO27001}>download</button>
                 
             </div>

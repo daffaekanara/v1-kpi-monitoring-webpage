@@ -6,7 +6,7 @@ import { Doughnut } from 'react-chartjs-2'
 
 const The_charts = () => {
 
-    const base_link = 'http://156.67.217.92/api/attrition/rate_v3/year'
+    const base_link = 'http://103.200.4.18:8181/api/attrition/rate_v3/year'
     const year = '2021'
     const link = base_link + '/' + year
 

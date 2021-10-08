@@ -16,7 +16,7 @@ const TotalJoin = () => {
   const [xData, setXData] = useState([])
 
   //API modification
-  const base_link = 'http://156.67.217.92/api/attrition/staff_attrition'
+  const base_link = 'http://103.200.4.18:8181/api/attrition/staff_attrition'
   const link = (base_link + '/' + year)
 
   useEffect(() => {

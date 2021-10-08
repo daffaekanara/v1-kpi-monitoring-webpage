@@ -37,7 +37,7 @@ const ChangePassword = () => {
   
   //fetch Trainings
   const fetchTrainings = async (e) => {
-    fetch('http://156.67.217.92/api/profile/change_password/')
+    fetch('http://103.200.4.18:8181/api/profile/change_password/')
       .then(resp => resp.json())
       .then(resp => setData(resp))
 
@@ -47,7 +47,7 @@ const ChangePassword = () => {
   
   //add training
   const addTraining = async (training) => {
-    const res = await fetch('http://156.67.217.92/api/profile/change_password/' + decode.id, {
+    const res = await fetch('http://103.200.4.18:8181/api/profile/change_password/' + decode.id, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

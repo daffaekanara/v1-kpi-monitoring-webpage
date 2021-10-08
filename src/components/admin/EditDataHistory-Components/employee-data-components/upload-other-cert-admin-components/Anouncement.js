@@ -15,7 +15,7 @@ const Anouncement = () => {
     }, []) //empty array [] for user atau yg lainnya
 
     const fetchTrainings = async () => {
-        const res = await fetch('http://156.67.217.92/api/training/announcement')
+        const res = await fetch('http://103.200.4.18:8181/api/training/announcement')
         const data = await res.json() //res.json cuma buat fake rest API BE
       
         console.log(data.body)

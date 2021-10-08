@@ -83,7 +83,7 @@ const AddTraining = ({ onAdd }) => {
             setLoadingSMR_1(true)
             setUploadedSMR_1(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/SMR_1/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/SMR_1/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -103,7 +103,7 @@ const AddTraining = ({ onAdd }) => {
         setLoadingSMR_2(true)
         setUploadedSMR_2(false)
         const res = await fetch(
-            'http://156.67.217.92/api/admin/employee_data/cert/SMR_2/' + decode.nik,
+            'http://103.200.4.18:8181/api/admin/employee_data/cert/SMR_2/' + decode.nik,
             {
                 method: 'POST',
                 body: data
@@ -123,7 +123,7 @@ const uploadSMR_3 = async e => {
         setLoadingSMR_3(true)
         setUploadedSMR_3(false)
         const res = await fetch(
-            'http://156.67.217.92/api/admin/employee_data/cert/SMR_3/' + decode.nik,
+            'http://103.200.4.18:8181/api/admin/employee_data/cert/SMR_3/' + decode.nik,
             {
                 method: 'POST',
                 body: data
@@ -143,7 +143,7 @@ const uploadSMR_4 = async e => {
         setLoadingSMR_4(true)
         setUploadedSMR_4(false)
         const res = await fetch(
-            'http://156.67.217.92/api/admin/employee_data/cert/SMR_4/' + decode.nik,
+            'http://103.200.4.18:8181/api/admin/employee_data/cert/SMR_4/' + decode.nik,
             {
                 method: 'POST',
                 body: data
@@ -163,7 +163,7 @@ const uploadSMR_5 = async e => {
         setLoadingSMR_5(true)
         setUploadedSMR_5(false)
         const res = await fetch(
-            'http://156.67.217.92/api/admin/employee_data/cert/SMR_5/' + decode.nik,
+            'http://103.200.4.18:8181/api/admin/employee_data/cert/SMR_5/' + decode.nik,
             {
                 method: 'POST',
                 body: data
@@ -183,7 +183,7 @@ const uploadSMR_5 = async e => {
             setLoadingCISA(true)
             setUploadedCISA(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/CISA/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/CISA/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -203,7 +203,7 @@ const uploadSMR_5 = async e => {
             setLoadingCEH(true)
             setUploadedCEH(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/CEH/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/CEH/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -223,7 +223,7 @@ const uploadSMR_5 = async e => {
             setLoadingISO27001(true)
             setUploadedISO27001(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/ISO27001/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/ISO27001/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -243,7 +243,7 @@ const uploadSMR_5 = async e => {
             setLoadingCHFI(true)
             setUploadedCHFI(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/CHFI/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/CHFI/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -263,7 +263,7 @@ const uploadSMR_5 = async e => {
             setLoadingQIA(true)
             setUploadedQIA(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/QIA/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/QIA/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -283,7 +283,7 @@ const uploadSMR_5 = async e => {
             setLoadingCIA(true)
             setUploadedCIA(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/CIA/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/CIA/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -303,7 +303,7 @@ const uploadSMR_5 = async e => {
             setLoadingCA(true)
             setUploadedCA(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/CA/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/CA/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -323,7 +323,7 @@ const uploadSMR_5 = async e => {
             setLoadingCBIA(true)
             setUploadedCBIA(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/CBIA/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/CBIA/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -343,7 +343,7 @@ const uploadSMR_5 = async e => {
             setLoadingCPA(true)
             setUploadedCPA(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/CPA/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/CPA/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -363,7 +363,7 @@ const uploadSMR_5 = async e => {
             setLoadingOther(true)
             setUploadedOther(false)
             const res = await fetch(
-                'http://156.67.217.92/api/admin/employee_data/cert/Other/' + decode.nik,
+                'http://103.200.4.18:8181/api/admin/employee_data/cert/Other/' + decode.nik,
                 {
                     method: 'POST',
                     body: data
@@ -402,7 +402,7 @@ const uploadSMR_5 = async e => {
             {uploadedCEH && <div className="upload-alert-container"><h3><b>CEH File Uploaded.</b></h3></div>}
 
             <div className='form-control'>
-                <label>ISO2700127001</label>
+                <label>ISO27001</label>
                 <input type='file'
                 onChange={uploadISO27001}/>
                 

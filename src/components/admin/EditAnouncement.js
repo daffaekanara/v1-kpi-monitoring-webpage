@@ -5,7 +5,7 @@ const EditAnouncement = () => {
 
     const [anouncementText, setAnouncementText] = useState('')
 
-    const url = 'http://156.67.217.92/api/admin/training_announcement_form'
+    const url = 'http://103.200.4.18:8181/api/admin/training_announcement_form'
 
     const onSubmit = (e) => {
         e.preventDefault()

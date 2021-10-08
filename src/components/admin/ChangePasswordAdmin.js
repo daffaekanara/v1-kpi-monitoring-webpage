@@ -52,7 +52,7 @@ const ChangePasswordAdmin = () => {
   
   //add training
   const addTraining = async (training) => {
-    const res = await fetch('http://156.67.217.92/api/admin/change_password', {
+    const res = await fetch('http://103.200.4.18:8181/api/admin/change_password', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

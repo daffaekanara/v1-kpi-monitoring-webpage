@@ -15,7 +15,7 @@ const EmployeeCertification2 = () => {
         formData.append("file", selectedFile);
 
         axios
-        .post('http://156.67.217.92/api/admin/employee_data/cert/SMR/888', formData)
+        .post('http://103.200.4.18:8181/api/admin/employee_data/cert/SMR/888', formData)
         .then((res) => {
         alert("File Upload success");
         })

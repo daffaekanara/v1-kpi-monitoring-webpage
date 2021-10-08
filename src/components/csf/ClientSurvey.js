@@ -11,7 +11,7 @@ const ClientSurvey = () => {
   const newDate = new Date()
   const [year, setYear] = useState(newDate.getFullYear())
 
-  const link = ('http://156.67.217.92/api/csf/client_survey/' + year)
+  const link = ('http://103.200.4.18:8181/api/csf/client_survey/' + year)
   
   const [chartData, setChartData] = useState({})
   const [yData, setYData] = useState([])

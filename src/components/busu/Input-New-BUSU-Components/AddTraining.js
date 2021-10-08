@@ -27,6 +27,23 @@ const AddTraining = ({ onAdd }) => {
 const onSubmit = (e) => {
     e.preventDefault()
 
+    if(!WorRM) {
+        alert('Please choose workshop or regular meeting.')
+        return
+    }
+    if(!date) {
+        alert('Please insert date.')
+        return
+    }
+    if(!activity) {
+        alert('Please insert activity name.')
+        return
+    }
+    if(!proof) {
+        alert('Please attach proof.')
+        return
+    }
+
     const formData = new FormData();
   formData.append("WorM", WorRM);
   formData.append("date", date);
@@ -34,7 +51,7 @@ const onSubmit = (e) => {
   formData.append("activity", activity);
   formData.append("id", id);
 
-  axios.post('http://156.67.217.92/api/engagement/input_form', formData)
+  axios.post('http://103.200.4.18:8181/api/engagement/input_form', formData)
     .then((res) => console.log(res))
     .catch((err) => alert("File Upload Error"));
 

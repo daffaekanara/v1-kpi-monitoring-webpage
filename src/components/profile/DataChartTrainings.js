@@ -20,7 +20,7 @@ const DataChartTrainings = () => {
   const [text_inside, setText_inside] = useState('')
 
   //API modification
-  const base_link = 'http://156.67.217.92/api/profile/data_chart_trainings'
+  const base_link = 'http://103.200.4.18:8181/api/profile/data_chart_trainings'
   const link = (base_link + '/' + decode.nik + '/' + year)
 
 

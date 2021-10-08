@@ -19,7 +19,7 @@ const AuditEXP = () => {
     let theXData = []
 
     //fetch data
-    axios.get('http://156.67.217.92/api/dashboard/audit_exp/')
+    axios.get('http://103.200.4.18:8181/api/dashboard/audit_exp/')
     .then(res => {
       console.log(res)
       for(const dataObj of res.data){

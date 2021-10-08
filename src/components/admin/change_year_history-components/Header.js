@@ -14,7 +14,7 @@ const Header = ({ title, onAdd, showAdd }) => {
     const location = useLocation()
     const [the_year,setThe_year] = useState('')
 
-    axios.get('http://156.67.217.92/api/admin/operation/migrate_data')
+    axios.get('http://103.200.4.18:8181/api/admin/operation/migrate_data')
     .then((res) => {
         console.log(res.data.year)
         setThe_year(res.data.year)
